@@ -83,7 +83,7 @@ require 'components/navbar.php';
             <input class="form-control" type="file" name="pictures[]" id="formFileMultiple" multiple>
         </div>
         <div class="col-12">
-            <button class="btn btn-warning rounded-pill" type="submit">Submit</button>
+            <button class="btn btn-dark rounded-pill" type="submit">Submit</button>
         </div>
     </form>
 

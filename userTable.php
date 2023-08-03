@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php if (empty($userinfocopy)): ?>
     <p>No data available in this table.</p>
 <?php else: ?>
-    <table class="table table-dark table-striped table-hover table-bordered shadow rounded-5" id="bookAppointment">
+    <table class="table table-light table-striped table-hover table-bordered shadow rounded-5" id="bookAppointment">
         <thead>
             <tr>
                 <th>#</th>
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         <form action="admin-dashboard.php" method="post">
                                             <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
-                                            <button type="submit" class="btn btn-danger"
+                                            <button type="submit" class="btn btn-dark"
                                                 name="deleteFromUserTable">Delete</button>
                                         </form>
                                     </div>
@@ -83,13 +83,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <form action="admin-dashboard.php" method="post">
                             <input type="hidden" name="userinfocopyEmail" value="<?php echo $user['email']; ?>">
                             <input type="hidden" name="operation" value="move">
-                            <button type="button" class="btn btn-warning rounded-pill" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-dark rounded-pill" data-bs-toggle="modal"
                                 data-bs-target="#moveConfirmationModal<?php echo $user['id']; ?>">Rented</button>
                         </form>
                         <div class="modal fade" id="moveConfirmationModal<?php echo $user['id']; ?>" tabindex="-1"
                             aria-labelledby="moveConfirmationModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content  bg-dark text-white">
+                                <div class="modal-content bg-light text-black">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="moveConfirmationModalLabel">Additional Information</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 <button type="button" class="btn btn-secondary rounded-pill btn-sm"
                                                     data-bs-dismiss="modal">Cancel</button>
                                                 <?php if (!empty($title)) { ?>
-                                                    <button type="submit" class="btn btn-warning rounded-pill"
+                                                    <button type="submit" class="btn btn-dark rounded-pill"
                                                         name="moveFromUserTable">Move</button>
                                                 <?php } ?>
                                             </div>

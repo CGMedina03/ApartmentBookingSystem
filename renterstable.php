@@ -50,7 +50,7 @@ if (isset($_POST['useAdvancePayment'])) {
 <?php if (empty($rented)): ?>
     <p>No data available in this table.</p>
 <?php else: ?>
-    <table class="table table-dark table-striped table-hover table-bordered shadow rounded-5" id="bookAppointment">
+    <table class="table table-light table-striped table-hover table-bordered shadow rounded-5" id="bookAppointment">
         <thead>
             <tr>
                 <th>#</th>
@@ -103,12 +103,12 @@ if (isset($_POST['useAdvancePayment'])) {
                         </form>
                         <form action="resetDueDate.php" method="post">
                             <input type="hidden" name="title" value="<?php echo $user['title']; ?>">
-                            <button type="submit" class="btn btn-warning rounded-pill mt-2">Payed</button>
+                            <button type="submit" class="btn btn-dark rounded-pill mt-2">Payed</button>
                         </form>
                         <?php if ($hasPositiveAdvancePayment): ?>
                             <form action="renterstable.php" method="post">
                                 <input type="hidden" name="useAdvancePayment" value="<?php echo $user['title']; ?>">
-                                <button type="submit" class="btn btn-outline-warning rounded-pill mt-2">Use Advance Payment</button>
+                                <button type="submit" class="btn btn-outline-dark rounded-pill mt-2">Use Advance Payment</button>
                             </form>
                         <?php endif; ?>
                     </td>

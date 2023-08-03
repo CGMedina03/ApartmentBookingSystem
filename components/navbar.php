@@ -27,11 +27,6 @@ require 'layout.php';
 
 
 <style>
-    body {
-        background-color: #343a40;
-        color: white;
-    }
-
     .logIn {
         background: linear-gradient(315deg, #0049ff, #d25f72, #a71a31);
         background-size: 600% 600%;
@@ -59,11 +54,10 @@ require 'layout.php';
 
     .addson::-webkit-scrollbar-thumb {
         border: 1px solid #9d8189;
-
         border-radius: 10px;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-        background: rgb(92, 96, 42);
-        background: linear-gradient(90deg, rgba(92, 96, 42, 1) 0%, rgba(250, 246, 166, 1) 42%, rgba(222, 208, 39, 0.8519782913165266) 100%);
+        background: rgb(2, 0, 36);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(83, 83, 158, 1) 35%, rgba(66, 118, 129, 1) 100%);
     }
 
     .img-logo {
@@ -73,23 +67,22 @@ require 'layout.php';
 </style>
 </head>
 
-<body>
+<body class="bg-body-secondary">
     <!-- navlist and title -->
-    <nav class="navbar bg-warning-subtle">
+    <nav class="navbar bg-dark text-white">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvas"
                 aria-controls="offCanvas">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list"
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </a>
-
-            <span class="fw-bold flex-grow-1 text-end d-none d-md-block text-black"> <img
-                    src="assets\LOGO-removebg-preview.png" alt="" class="img-logo me-2">Rizal Park's Apartment Booking
+            <span class="fw-bold flex-grow-1 text-end d-none d-md-block"> <img src="assets\LOGO-removebg-preview.png"
+                    alt="" class="img-logo me-2">Rizal Park's Apartment Booking
                 System</span>
-            <span class="fw-bold flex-grow-1 text-end d-block d-md-none text-black">RPABS</span>
+            <span class="fw-bold flex-grow-1 text-end d-block d-md-none">RPABS</span>
         </div>
         <!-- start of offcanvas -->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvas" aria-labelledby="offCanvasLabel"

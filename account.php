@@ -72,7 +72,7 @@ if ($daysRemaining <= 0) {
 <title>Profile Account</title>
 </head>
 
-<body class="text-white">
+<body class="text-black">
   <?php require 'components/navbar.php'; ?>
   <div class="container-md">
 
@@ -152,7 +152,7 @@ if ($daysRemaining <= 0) {
           quos libero non quasi blanditiis veniam tempore. Eligendi, hic enim.
         </p>
         <a href="reviews.php?userId=<?php echo $userId; ?>"
-          class="btn btn-outline-warning w-50 mt-5 rounded-pill d-none d-md-block">
+          class="btn btn-outline-dark w-50 mt-5 rounded-pill d-none d-md-block">
           Leave us a Review!
         </a>
       </div>
@@ -160,9 +160,9 @@ if ($daysRemaining <= 0) {
       <!-- Picture on the right -->
       <div class="col d-flex flex-column align-items-center py-5 vh-25">
         <img id="profilePicture" src="<?php echo $pfPicture; ?>" alt="" style="width: 15rem; height: 15rem"
-          class="rounded-circle object-fit-cover border border-5 border-warning-subtle" />
+          class="rounded-circle object-fit-cover border border-5 border-dark-subtle" />
         <a href="update.php?userId=<?php echo $userId; ?>"
-          class="btn btn-outline-warning w-25 my-3 rounded-pill text-decoration-none">Update</a>
+          class="btn btn-outline-dark w-25 my-3 rounded-pill text-decoration-none">Update</a>
       </div>
     </div>
 

@@ -139,10 +139,9 @@ ob_end_flush();
             <?php endif; ?>
         </div>
         <div class="col-12">
-            <button class="btn btn-warning rounded-pill" type="submit">Submit form</button>
-            <a class="btn btn-outline-warning btn-sm rounded-pill"
-                href="account.php?userId=<?php echo urlencode($userId); ?>">Go
-                back</a>
+            <button class="btn btn-dark rounded-pill" type="submit">Submit</button>
+            <a class="btn btn-outline-dark btn-sm rounded-pill"
+                href="account.php?userId=<?php echo urlencode($userId); ?>">Back</a>
         </div>
     </form>
 </div>

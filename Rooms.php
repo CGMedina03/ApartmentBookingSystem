@@ -22,9 +22,9 @@ if (isset($_GET['rID'])) {
 
 <div class="container">
     <h2>Rooms</h2>
-    <a class="btn rounded-pill btn-warning" href="addNewRooms.php?userId=<?php echo $userId; ?>">Add new
+    <a class="btn rounded-pill btn-dark my-3" href="addNewRooms.php?userId=<?php echo $userId; ?>">Add new
         Rooms</a>
-    <table class="table table-dark table-striped">
+    <table class="table table-light table-striped">
         <thead>
             <tr>
                 <th>Title</th>
@@ -69,7 +69,7 @@ if (isset($_GET['rID'])) {
                         <?php echo $room['price']; ?>
                     </td>
                     <td>
-                        <a class="btn rounded-pill btn-warning my-3"
+                        <a class="btn rounded-pill btn-dark my-3"
                             href="UpdateRoom.php?userId=<?php echo $userId; ?>&rID=<?php echo $room['rID']; ?>">Update</a>
                         <a class="btn rounded-pill btn-secondary"
                             href="Rooms.php?userId=<?php echo $userId; ?>&rID=<?php echo $room['rID']; ?>">Delete</a>

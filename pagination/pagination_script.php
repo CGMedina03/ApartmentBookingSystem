@@ -29,7 +29,7 @@ if (empty($appointment)) {
     ?>
 
     <form action="admin-dashboard.php" method="post" onsubmit="return validateForm()">
-        <table class="table table-dark table-striped table-hover table-bordered shadow rounded-5" id="userTable">
+        <table class="table table-light table-striped table-hover table-bordered shadow rounded-5" id="userTable">
             <thead>
                 <tr>
                     <th>
@@ -83,7 +83,7 @@ if (empty($appointment)) {
                             <input type="hidden" name="selectedRow[]" value="<?php echo $user['aID']; ?>">
                         </form>
                         <form action="admin-dashboard.php" method="post">
-                            <button type="submit" class="btn btn-warning rounded-pill btn-sm p-2 mb-lg-0"
+                            <button type="submit" class="btn btn-dark rounded-pill btn-sm p-2 mb-lg-0"
                                 name="moveToCompleteFromUserInfo">Complete</button>
                             <input type="hidden" name="selectedRow[]" value="<?php echo $user['aID']; ?>">
                         </form>
@@ -96,17 +96,17 @@ if (empty($appointment)) {
             <ul class="pagination justify-content-center">
                 <?php if ($currentPage > 1): ?>
                     <li class="page-item">
-                        <a class="page-link  bg-warning text-black" href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
+                        <a class="page-link  bg-dark text-white" href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
                     </li>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                     <li class="page-item <?php echo ($i === $currentPage) ? 'active' : ''; ?>">
-                        <a class="page-link  bg-warning text-black" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                        <a class="page-link  bg-dark text-white" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                     </li>
                 <?php endfor; ?>
                 <?php if ($currentPage < $totalPages): ?>
                     <li class="page-item">
-                        <a class="page-link  bg-warning text-black" href="?page=<?php echo $currentPage + 1; ?>">Next</a>
+                        <a class="page-link  bg-dark text-white" href="?page=<?php echo $currentPage + 1; ?>">Next</a>
                     </li>
                 <?php endif; ?>
             </ul>

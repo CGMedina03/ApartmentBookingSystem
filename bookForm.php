@@ -152,7 +152,7 @@ ob_end_flush();
 <title>Book Appointment Form</title>
 </head>
 
-<body class=" bg-dark text-white">
+<body class=" bg-body-secondary text-black">
     <div class="container">
         <form class="row m-3" method="POST">
             <?php if (isset($errors['general'])): ?>
@@ -316,14 +316,14 @@ ob_end_flush();
                             <?php require 'terms_modal_content.php'; ?>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Submit button -->
             <div class="col-12 mt-2">
-                <button class="btn btn-warning" type="submit">Appoint</button>
+                <button class="btn btn-dark" type="submit">Appoint</button>
             </div>
         </form>
     </div>

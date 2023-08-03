@@ -139,7 +139,7 @@ $trendsDataJson = json_encode($trendsData);
 </style>
 <title>Dashboard</title>
 
-<body class=" bg-dark text-white">
+<body class="bg-body-secondary text-black">
     <?php
     if (isset($_SESSION['errorMessage'])) {
         $errorMessage = $_SESSION['errorMessage'];
@@ -293,11 +293,11 @@ $trendsDataJson = json_encode($trendsData);
     <nav aria-label="breadcrumb" id="breadcrumbs">
         <ol class="breadcrumb ms-5">
             <li class="breadcrumb-item <?php if ($isDashboard && !$isUserTable && !$isBookAppointment)
-                echo 'active'; ?> text-white">
+                echo 'active'; ?> text-black">
                 <?php if ($isDashboard && !$isUserTable && !$isBookAppointment): ?>
                     Dashboard
                 <?php else: ?>
-                    <a href="admin-dashboard.php?userId=<?php echo $userId; ?> text-white">Dashboard</a>
+                    <a href="admin-dashboard.php?userId=<?php echo $userId; ?> text-black">Dashboard</a>
                 <?php endif; ?>
             </li>
             <li class="breadcrumb-item <?php if ($isUserTable || $isBookAppointment || $isAddRooms || $isAddAddsOn)
@@ -566,7 +566,7 @@ $trendsDataJson = json_encode($trendsData);
             hideNavigationContainer();
             showNav('userTableLink');
             document.getElementById('userTable').style.display = 'block';
-            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-white">Book Appointment</li></ol>';
+            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-black">Book Appointment</li></ol>';
         });
 
         document.getElementById('bookAppointmentLink').addEventListener('click', function (event) {
@@ -576,7 +576,7 @@ $trendsDataJson = json_encode($trendsData);
             hideNavigationContainer();
             showNav('bookAppointmentLink');
             document.getElementById('bookAppointment').style.display = 'block';
-            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-white">User Table</li></ol>';
+            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-black">User Table</li></ol>';
         });
 
         document.getElementById('addRoomsLink').addEventListener('click', function (event) {
@@ -586,7 +586,7 @@ $trendsDataJson = json_encode($trendsData);
             hideNavigationContainer();
             showNav('addRoomsLink');
             document.getElementById('addRooms').style.display = 'block';
-            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-white">Rooms</li></ol>';
+            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-black">Rooms</li></ol>';
         });
 
         document.getElementById('addOnsLink').addEventListener('click', function (event) {
@@ -596,7 +596,7 @@ $trendsDataJson = json_encode($trendsData);
             hideNavigationContainer();
             showNav('addOnsLink');
             document.getElementById('addOns').style.display = 'block';
-            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-white">AddsOn</li></ol>';
+            document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-black">AddsOn</li></ol>';
         });
 
         // Function to generate a color based on the input label

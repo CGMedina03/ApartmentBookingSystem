@@ -92,7 +92,7 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
         </div>
         <!-- room details -->
         <div class="col-lg-6">
-            <div class="container text-center border border-5">
+            <div class="container text-center bg-dark text-white rounded shadow p-3">
                 <div class="row">
                     <div class="col">
                         <h2>
@@ -121,10 +121,10 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
             <?php if (isset($_GET['userId'])): ?>
                 <!-- Redirect to bookForm.php for logged-in users -->
                 <a href="bookForm.php?userId=<?php echo urlencode($_GET['userId']); ?>&rID=<?php echo $room['rID']; ?>"
-                    class="btn btn-outline-warning rounded-pill w-50 text-decoration-none">Appoint</a>
+                    class="btn btn-outline-dark rounded-pill w-50 text-decoration-none">Appoint</a>
             <?php else: ?>
                 <!-- Redirect to login.php for users not logged in -->
-                <a href="login.php" class="btn btn-outline-warning rounded-pill w-50 text-decoration-none">Appoint</a>
+                <a href="login.php" class="btn btn-outline-dark rounded-pill w-50 text-decoration-none">Appoint</a>
             <?php endif; ?>
         </div>
     </div>

@@ -256,10 +256,10 @@ require 'components/navbar.php';
         </div>
 
         <div class="d-flex justify-content-end align-items-center mt-5">
-            <button type="button" class="btn btn-warning btn-sm me-3 p-2 rounded-pill">
-                <a href="account.php?userId=<?php echo $userId; ?>" class="text-black text-decoration-none">Cancel</a>
+            <button type="button" class="btn btn-dark btn-sm me-3 p-2 rounded-pill">
+                <a href="account.php?userId=<?php echo $userId; ?>" class="text-white text-decoration-none">Cancel</a>
             </button>
-            <button type="submit" class="btn btn-outline-warning rounded-pill" name="submit">Update</button>
+            <button type="submit" class="btn btn-outline-dark rounded-pill" name="submit">Update</button>
         </div>
     </form>
 </div>

@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_password']) && is
                 </div>
                 <div class="invalid-feedback">Please confirm your new password.</div>
             </div>
-            <button type="submit" class="btn btn-warning rounded-pill mt-3">Update Password</button>
+            <button type="submit" class="btn btn-dark rounded-pill mt-3">Update Password</button>
         </form>
     <?php else: ?>
         <form class="needs-validation" novalidate method="POST">
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_password']) && is
                 <input type="email" class="form-control" id="email" name="email" required>
                 <div class="invalid-feedback">Please enter a valid email address.</div>
             </div>
-            <button type="submit" class="btn btn-outline-warning mt-3">Submit</button>
+            <button type="submit" class="btn btn-outline-dark mt-3">Submit</button>
         </form>
     <?php endif; ?>
 </div>
