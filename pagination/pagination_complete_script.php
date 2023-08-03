@@ -25,7 +25,7 @@ $counter = $startIndex + 1;
     <p>No data available.</p>
 <?php else: ?>
     <form action="admin-dashboard.php" method="post" onsubmit="return validateForm()">
-        <table class="table table-striped table-hover table-bordered shadow rounded-5">
+        <table class="table table-dark table-striped table-hover table-bordered shadow rounded-5">
             <thead>
                 <tr>
                     <th>
@@ -69,15 +69,15 @@ $counter = $startIndex + 1;
             <tfoot>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-success rounded-pill btn-sm m-2" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-warning rounded-pill btn-sm m-2" data-bs-toggle="modal"
                             data-bs-target="#deleteConfirmationModal<?php echo $user['id']; ?>">
                             Delete
                         </button>
                         <!-- Delete Confirmation Modal -->
-                        <div class="modal fade" id="deleteConfirmationModal<?php echo $user['id']; ?>" tabindex="-1"
+                        <div class="modal fade " id="deleteConfirmationModal<?php echo $user['id']; ?>" tabindex="-1"
                             aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content text-black">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm
                                             Deletion
@@ -92,7 +92,7 @@ $counter = $startIndex + 1;
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
                                         <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
-                                        <button type="submit" class="btn btn-danger"
+                                        <button type="submit" class="btn btn-warning"
                                             name="deleteFromComplete">Delete</button>
                                     </div>
                                 </div>
@@ -109,17 +109,17 @@ $counter = $startIndex + 1;
         <ul class="pagination justify-content-center">
             <?php if ($currentPage > 1): ?>
                 <li class="page-item">
-                    <a class="page-link text-reset" href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
+                    <a class="page-link bg-warning text-black" href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
                 </li>
             <?php endif; ?>
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <li class="page-item <?php echo ($i === $currentPage) ? 'active' : ''; ?>">
-                    <a class="page-link text-reset" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    <a class="page-link bg-warning text-black" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                 </li>
             <?php endfor; ?>
             <?php if ($currentPage < $totalPages): ?>
                 <li class="page-item">
-                    <a class="page-link text-reset" href="?page=<?php echo $currentPage + 1; ?>">Next</a>
+                    <a class="page-link bg-warning text-black" href="?page=<?php echo $currentPage + 1; ?>">Next</a>
                 </li>
             <?php endif; ?>
         </ul>

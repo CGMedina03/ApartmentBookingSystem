@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php if (empty($userinfocopy)): ?>
     <p>No data available in this table.</p>
 <?php else: ?>
-    <table class="table table-striped table-hover table-bordered shadow rounded-5" id="bookAppointment">
+    <table class="table table-dark table-striped table-hover table-bordered shadow rounded-5" id="bookAppointment">
         <thead>
             <tr>
                 <th>#</th>
@@ -49,15 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <?php echo $user['email']; ?>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-secondary rounded-pill btn-sm m-2" data-bs-toggle="modal"
-                            data-bs-target="#deleteConfirmationModal<?php echo $user['id']; ?>">
+                        <button type="button" class="btn btn-secondary text-white rounded-pill btn-sm m-2"
+                            data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal<?php echo $user['id']; ?>">
                             Delete
                         </button>
                         <!-- Delete Confirmation Modal -->
                         <div class="modal fade" id="deleteConfirmationModal<?php echo $user['id']; ?>" tabindex="-1"
                             aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content text-black">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm
                                             Deletion
@@ -83,13 +83,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <form action="admin-dashboard.php" method="post">
                             <input type="hidden" name="userinfocopyEmail" value="<?php echo $user['email']; ?>">
                             <input type="hidden" name="operation" value="move">
-                            <button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-warning rounded-pill" data-bs-toggle="modal"
                                 data-bs-target="#moveConfirmationModal<?php echo $user['id']; ?>">Rented</button>
                         </form>
                         <div class="modal fade" id="moveConfirmationModal<?php echo $user['id']; ?>" tabindex="-1"
                             aria-labelledby="moveConfirmationModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content  bg-dark text-white">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="moveConfirmationModalLabel">Additional Information</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             </div>
                                             <div class="form-group mb-3">
                                                 <h4 for="rentAndExtra">Information</h4>
-                                                <?php if (!empty($title) && !empty($addOn)) { ?>
+                                                <?php if (!empty($title)) { ?>
                                                     <p>Room Title:
                                                         <?php echo $title; ?>
                                                     </p>
@@ -134,10 +134,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 <?php } ?>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
+                                                <button type="button" class="btn btn-secondary rounded-pill btn-sm"
                                                     data-bs-dismiss="modal">Cancel</button>
-                                                <?php if (!empty($title) && !empty($addOn)) { ?>
-                                                    <button type="submit" class="btn btn-danger"
+                                                <?php if (!empty($title)) { ?>
+                                                    <button type="submit" class="btn btn-warning rounded-pill"
                                                         name="moveFromUserTable">Move</button>
                                                 <?php } ?>
                                             </div>

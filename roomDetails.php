@@ -121,10 +121,10 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
             <?php if (isset($_GET['userId'])): ?>
                 <!-- Redirect to bookForm.php for logged-in users -->
                 <a href="bookForm.php?userId=<?php echo urlencode($_GET['userId']); ?>&rID=<?php echo $room['rID']; ?>"
-                    class="btn btn-outline-danger rounded-pill w-50 text-decoration-none">Appoint</a>
+                    class="btn btn-outline-warning rounded-pill w-50 text-decoration-none">Appoint</a>
             <?php else: ?>
                 <!-- Redirect to login.php for users not logged in -->
-                <a href="login.php" class="btn btn-outline-danger rounded-pill w-50 text-decoration-none">Appoint</a>
+                <a href="login.php" class="btn btn-outline-warning rounded-pill w-50 text-decoration-none">Appoint</a>
             <?php endif; ?>
         </div>
     </div>

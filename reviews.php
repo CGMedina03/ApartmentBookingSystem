@@ -81,7 +81,7 @@ ob_end_flush();
 
 <title>Review</title>
 
-<div class="container">
+<div class="container shadow my-5 p-3">
     <h2>Kindly leave us a review</h2>
     <?php if ($errorMessage): ?>
         <div class="alert alert-danger" role="alert">
@@ -125,7 +125,7 @@ ob_end_flush();
             <label for="validationCustom04" class="form-label">Star</label>
             <select class="form-select <?php echo isset($errors['star']) ? 'is-invalid' : ''; ?>"
                 id="validationCustom04" name="star" required>
-                <option selected disabled value="">Open this</option>
+                <option selected disabled value="">Give us a star</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -139,8 +139,10 @@ ob_end_flush();
             <?php endif; ?>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-            <a class="btn btn-primary" href="account.php?userId=<?php echo urlencode($userId); ?>">Go back</a>
+            <button class="btn btn-warning rounded-pill" type="submit">Submit form</button>
+            <a class="btn btn-outline-warning btn-sm rounded-pill"
+                href="account.php?userId=<?php echo urlencode($userId); ?>">Go
+                back</a>
         </div>
     </form>
 </div>

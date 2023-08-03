@@ -27,6 +27,11 @@ require 'layout.php';
 
 
 <style>
+    body {
+        background-color: #343a40;
+        color: white;
+    }
+
     .logIn {
         background: linear-gradient(315deg, #0049ff, #d25f72, #a71a31);
         background-size: 600% 600%;
@@ -54,9 +59,11 @@ require 'layout.php';
 
     .addson::-webkit-scrollbar-thumb {
         border: 1px solid #9d8189;
-        background-image: linear-gradient(45deg, #ffcad4, #f4acb7, #ffe5d9);
+
         border-radius: 10px;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        background: rgb(92, 96, 42);
+        background: linear-gradient(90deg, rgba(92, 96, 42, 1) 0%, rgba(250, 246, 166, 1) 42%, rgba(222, 208, 39, 0.8519782913165266) 100%);
     }
 
     .img-logo {

@@ -70,8 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php
 require 'components/navbar.php';
 ?>
-<h2>Update addsons</h2>
+<title>Upade Ammenity</title>
 <div class="container">
+    <h2>Update addsons</h2>
     <!-- Display error messages if any -->
     <?php if (!empty($errors)): ?>
         <div class="alert alert-danger">
@@ -114,7 +115,7 @@ require 'components/navbar.php';
             <input class="form-control" type="file" name="picture[]" id="formFileMultiple" multiple>
         </div>
         <div class="col-12">
-            <button class="btn btn-danger" type="submit">Submit form</button>
+            <button class="btn btn-warning rounded-pill" type="submit">Submit form</button>
         </div>
     </form>
 </div>

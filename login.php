@@ -56,8 +56,8 @@ require 'components/navbar.php';
 
 
 <body>
-  <div class="container pt-4 pt-lg-0 d-flex justify-content-center align-items-center mt-0 mt-lg-5">
-    <div class="card shadow-lg " style="max-width: 30rem; height: auto">
+  <div class="container pt-4 pt-lg-0 d-flex justify-content-center align-items-center mt-0 mt-lg-5 ">
+    <div class="card shadow-lg  bg-dark text-white" style="max-width: 30rem; height: auto">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="assets/pexels-thorsten-technoman-338504.jpg"
@@ -118,7 +118,7 @@ require 'components/navbar.php';
                 </div>
               </div>
               <div class="d-flex justify-content-end">
-                <button type="submit" class="btn m-3 btn-outline-danger rounded-5">Log in</button>
+                <button type="submit" class="btn m-3 btn-outline-warning rounded-5">Log in</button>
               </div>
             </form>
             <div class="p-3">

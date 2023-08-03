@@ -10,6 +10,17 @@ $roomNumber = 1; // Replace this with the actual room number
 
 // Add a conditional class based on even/odd room number
 $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
+
+// Function to truncate the text
+function truncateText($text, $length = 100)
+{
+  if (mb_strlen($text) > $length) {
+    $truncatedText = mb_substr($text, 0, $length) . '...';
+    return $truncatedText;
+  }
+  return $text;
+}
+
 ?>
 <style>
   .carouselBtn {
@@ -141,7 +152,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
               <?php endif; ?>
               <?php if (isset($room['description'])): ?>
                 <p class="<?php echo $room['rID'] % 2 === 0 ? 'text-lg-end' : ''; ?>">
-                  <?php echo $room['description']; ?>
+                  <?php echo truncateText($room['description'], 150); ?>
                 </p>
               <?php endif; ?>
             </div>
@@ -259,7 +270,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
   <!-- footer -->
   <footer>
     <div class="bg-dark-subtle pb-1 sticky-bottom">
-      <p class="text-center text-white align-bottom">
+      <p class="text-center text-black align-bottom">
         Read all Terms and Conditions. All rights reseve 2023 ©
       </p>
     </div>

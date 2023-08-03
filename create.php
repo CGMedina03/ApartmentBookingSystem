@@ -119,7 +119,7 @@ require 'components/navbar.php';
 
 <body>
   <div class="container my-3 mt-lg-4 d-flex flex-row-reverse justify-content-center align-items-center">
-    <div class="card shadow-lg" style="max-width: 50rem; height: auto">
+    <div class="card shadow-lg  bg-dark text-white" style="max-width: 50rem; height: auto">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="assets/pexels-thorsten-technoman-338504.jpg"
@@ -161,7 +161,7 @@ require 'components/navbar.php';
                 <label for="formFile" class="form-label">Upload your picture</label>
                 <input class="form-control <?php if (!empty($pfPictureError))
                   echo 'is-invalid'; ?>" type="file" id="pfPicture" name="pfPicture">
-                <small class="text-muted">*Only picture 20mb and below is accepted</small>
+                <small class="text-white"><i>*Only picture 20mb and below is accepted</i></small>
                 <?php if (!empty($pfPictureError)): ?>
                   <div class="invalid-feedback">
                     <?php echo $pfPictureError; ?>
@@ -203,7 +203,7 @@ require 'components/navbar.php';
                 </div>
               </div>
               <div class="d-flex justify-content-end align-items-center">
-                <button type=" submit" name="submit" class="btn m-3 btn-outline-danger rounded-5">
+                <button type=" submit" name="submit" class="btn m-3 btn-outline-warning rounded-5">
                   Submit
                 </button>
               </div>

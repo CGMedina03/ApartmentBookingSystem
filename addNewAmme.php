@@ -50,8 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 require 'components/navbar.php';
 ?>
-<h2>Add New addsOns</h2>
+<title>Add new Ammenity</title>
 <div class="container">
+    <h2>Add New addsOns</h2>
     <!-- Display error messages if any -->
     <?php if (!empty($errors)): ?>
         <div class="alert alert-danger">
@@ -82,7 +83,7 @@ require 'components/navbar.php';
             <input class="form-control" type="file" name="pictures[]" id="formFileMultiple" multiple>
         </div>
         <div class="col-12">
-            <button class="btn btn-danger" type="submit">Submit form</button>
+            <button class="btn btn-warning rounded-pill" type="submit">Submit form</button>
         </div>
     </form>
 
