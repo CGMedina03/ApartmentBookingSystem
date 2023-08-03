@@ -5,21 +5,22 @@ require 'components/retrieveRenters.php';
 require 'components/layout.php';
 require 'components/retrieveRooms.php';
 
-// Check if the current user is a renter and if a title is available
+// Check if the current user is a renter and get the rented title
 $isRenter = false;
-if (isset($title)) {
+$title = "";
+if (!empty($rented)) {
   foreach ($rented as $renter) {
-    if ($renter['email'] == $email && $renter['title'] == $title) {
+    if ($renter['email'] == $email) {
       $isRenter = true;
       $advancePayment = $renter['advancePayment'];
+      $title = $renter['title']; // Get the title from the rented item
       break;
     }
   }
 }
-
 // Fetch room data based on the rented title
 $room = null; // Initialize as null
-if ($isRenter && isset($title)) {
+if ($isRenter && isset($title) && !empty($rented)) {
   // Create a query to retrieve room information based on the rented title
   $query = "SELECT * FROM rooms WHERE title = '$title'";
 
@@ -36,29 +37,35 @@ if ($isRenter && isset($title)) {
     echo "Error executing the query: " . mysqli_error($conn);
   }
 }
+$daysRemaining = "0";
+// Check if $renter is not null before accessing its elements
+if ($isRenter && isset($title) && !empty($renter)) {
+  // Calculate the due date one month from the dateMoved
+  $dateMoved = strtotime($renter['dateMoved']);
+  $dueDate = date('M d, Y', strtotime('+1 month', $dateMoved));
 
-// Calculate the due date one month from the dateMoved
-$dateMoved = strtotime($renter['dateMoved']);
-$dueDate = date('M d, Y', strtotime('+1 month', $dateMoved));
+  // Calculate the number of days remaining until the due date
+  $currentDate = time(); // Current timestamp
+  $dueDateTimestamp = strtotime($dueDate);
+  $daysRemaining = floor(($dueDateTimestamp - $currentDate) / (60 * 60 * 24));
 
-// Calculate the number of days remaining until the due date
-$currentDate = time(); // Current timestamp
-$dueDateTimestamp = strtotime($dueDate);
-$daysRemaining = floor(($dueDateTimestamp - $currentDate) / (60 * 60 * 24));
+  // Check if the due date has passed and update the advancePayment
+  if ($daysRemaining <= 0) {
+    // Add a check for $room to avoid accessing it if it's null
+    if (!empty($room)) {
+      $advancePayment = $room['price'];
+      // Update the advancePayment in the rented table
+      $updateQuery = "UPDATE rented SET advancePayment = '$advancePayment' WHERE title = '$title'";
+      $updateResult = mysqli_query($conn, $updateQuery);
+      if (!$updateResult) {
+        echo "Error updating the advancePayment: " . mysqli_error($conn);
+      }
 
-// Check if the due date has passed and update the advancePayment
-if ($daysRemaining <= 0) {
-  $advancePayment = $room['price'];
-  // Update the advancePayment in the rented table
-  $updateQuery = "UPDATE rented SET advancePayment = '$advancePayment' WHERE title = '$title'";
-  $updateResult = mysqli_query($conn, $updateQuery);
-  if (!$updateResult) {
-    echo "Error updating the advancePayment: " . mysqli_error($conn);
-  }
-
-  // Show the toast notification if advance payment is all used up
-  if ($advancePayment <= 0) {
-    echo "<script>$(document).ready(function(){ $('#paymentToast').toast('show'); });</script>";
+      // Show the toast notification if advance payment is all used up
+      if ($advancePayment <= 0) {
+        echo "<script>$(document).ready(function(){ $('#paymentToast').toast('show'); });</script>";
+      }
+    }
   }
 }
 
@@ -107,7 +114,7 @@ if ($daysRemaining <= 0) {
               <h5 class="card-title">Rent Payment</h5>
               <p class="card-text">
               <h3>Due Date</h3>
-              <span class="text-muted">
+              <span class="text-white">
                 <?php echo $dueDate; ?>
               </span>
               <p>

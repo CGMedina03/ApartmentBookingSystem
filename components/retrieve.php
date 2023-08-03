@@ -57,18 +57,4 @@ if (isset($_GET['userId'])) {
     $password = "";
     $cPassword = "";
 }
-
-// Retrieve data from rented table
-$rented = array(); // Initialize as an empty array
-
-// Retrieve rented data from the database
-$query_rented = "SELECT * FROM rented";
-$result_rented = $conn->query($query_rented);
-
-// Store the retrieved rented data in an array
-if ($result_rented->num_rows > 0) {
-    while ($row_rented = $result_rented->fetch_assoc()) {
-        $rented[] = $row_rented;
-    }
-}
 ?>

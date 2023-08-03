@@ -59,6 +59,7 @@ if (isset($_POST['useAdvancePayment'])) {
                 <th>Email</th>
                 <th>Due Date</th>
                 <th>Advance Payment Balance</th>
+                <th>Monthly Rent</th>
                 <th>Operation</th>
             </tr>
         </thead>
@@ -76,6 +77,12 @@ if (isset($_POST['useAdvancePayment'])) {
                 // Check if the user has advancePayment greater than 0
                 $advancePayment = (float) $user['advancePayment'];
                 $hasPositiveAdvancePayment = $advancePayment > 0;
+                // Get the room price from the "rooms" table
+                $title = $user['title'];
+                $getPriceQuery = "SELECT price FROM rooms WHERE title = '$title'";
+                $result = mysqli_query($conn, $getPriceQuery);
+                $row = mysqli_fetch_assoc($result);
+                $price = (float) $row['price'];
                 ?>
                 <tr>
                     <td>
@@ -95,6 +102,9 @@ if (isset($_POST['useAdvancePayment'])) {
                     </td>
                     <td>
                         <?php echo $advancePayment; ?>
+                    </td>
+                    <td>
+                        <?php echo $price; ?>
                     </td>
                     <td>
                         <form action="removeRented.php" method="post">
