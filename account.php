@@ -72,7 +72,7 @@ if ($daysRemaining <= 0) {
 <title>Profile Account</title>
 </head>
 
-<body class="text-black">
+<body class="text-black bg-body-secondary">
   <?php require 'components/navbar.php'; ?>
   <div class="container-md">
 
@@ -101,8 +101,8 @@ if ($daysRemaining <= 0) {
     <div class="row row-cols-1 row-cols-md-3 d-flex justify-content-center align-items-center">
       <!-- Card on the left -->
       <?php if ($isRenter && isset($room)): ?>
-        <div class="col d-flex flex-column align-items-center p-3 text-center vh-25">
-          <div class="card" style="width: 18rem;">
+        <div class="col d-flex flex-column align-items-center p-3 text-center vh-25 ">
+          <div class="card bg-dark text-white shadow-lg" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Rent Payment</h5>
               <p class="card-text">

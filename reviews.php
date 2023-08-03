@@ -81,7 +81,7 @@ ob_end_flush();
 
 <title>Review</title>
 
-<div class="container shadow my-5 p-3">
+<div class="container shadow my-5 p-3 ">
     <h2>Kindly leave us a review</h2>
     <?php if ($errorMessage): ?>
         <div class="alert alert-danger" role="alert">
