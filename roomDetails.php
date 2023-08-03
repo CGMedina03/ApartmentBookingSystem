@@ -94,22 +94,23 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
         <div class="col-lg-6">
             <div class="container text-center bg-dark text-white rounded shadow p-3">
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-12">
                         <h2>
                             <?php echo $title; ?>
                         </h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-12">
                         <p>
                             <?php echo $description; ?>
                         </p>
                     </div>
-                    <div class="col">
-                        <p>
-                            <?php echo $price; ?>
-                        </p>
+                    <div class="col col-12">
+                        <h4>
+                            Price:
+                            <?php echo $price; ?>/monthly
+                        </h4>
                     </div>
                 </div>
             </div>
