@@ -120,44 +120,45 @@ function truncateText($text, $length = 100)
   <!-- rooms -->
   <section id="rooms">
     <div class="container-sm py-3">
-      <!-- room 1 -->
       <?php foreach ($rooms as $room): ?>
-        <div class="mb-3 mx-lg-5 px-lg-5">
-          <div class="d-lg-flex <?php echo $room['rID'] % 2 === 0 ? 'flex-row-reverse' : ''; ?>">
-            <div class="pt-3 p-lg-3">
-              <?php if (isset($room['picture']) && !empty(trim($room['picture']))): ?>
-                <?php
-                // Split the picture URLs into an array using line breaks as delimiters
-                $pictureUrls = explode("\n", $room['picture']);
-                // Take the first URL from the array
-                $firstPictureUrl = isset($pictureUrls[0]) ? trim($pictureUrls[0]) : null;
-                ?>
-                <!-- Wrap the room content inside an anchor tag with a link to roomDetails page -->
-                <a class="text-decoration-none text-reset"
-                  href="<?php echo $userId && !empty($userId) ? 'roomDetails.php?userId=' . $userId . '&rID=' . $room['rID'] : 'roomDetails.php?rID=' . $room['rID']; ?>">
-                  <img src="<?php echo $firstPictureUrl; ?>" alt="" class="card-img rounded rounded-3"
-                    style="width: 300px; height: 200px; object-fit: cover;" />
-                </a>
-              <?php endif; ?>
-            </div>
-            <div class="pt-2 mt-3 mt-lg-5">
-              <?php if (isset($room['title'])): ?>
-                <!-- Wrap the room title inside an anchor tag with a link to roomDetails page -->
-                <a class="text-decoration-none text-reset"
-                  href="<?php echo $userId && !empty($userId) ? 'roomDetails.php?userId=' . $userId . '&rID=' . $room['rID'] : 'roomDetails.php?rID=' . $room['rID']; ?>">
-                  <h2 class="<?php echo $room['rID'] % 2 === 0 ? 'text-lg-end' : ''; ?>">
-                    <?php echo $room['title']; ?>
-                  </h2>
-                </a>
-              <?php endif; ?>
-              <?php if (isset($room['description'])): ?>
-                <p class="<?php echo $room['rID'] % 2 === 0 ? 'text-lg-end' : ''; ?>">
-                  <?php echo truncateText($room['description'], 150); ?>
-                </p>
-              <?php endif; ?>
+        <?php if ($room['status'] === 'Available' || $room['status'] === 'Undecided'): ?>
+          <div class="mb-3 mx-lg-5 px-lg-5">
+            <div class="d-lg-flex <?php echo $room['rID'] % 2 == 0 ? 'flex-row-reverse' : ''; ?>">
+              <div class="pt-3 p-lg-3">
+                <?php if (isset($room['picture']) && !empty(trim($room['picture']))): ?>
+                  <?php
+                  // Split the picture URLs into an array using line breaks as delimiters
+                  $pictureUrls = explode("\n", $room['picture']);
+                  // Take the first URL from the array
+                  $firstPictureUrl = isset($pictureUrls[0]) ? trim($pictureUrls[0]) : null;
+                  ?>
+                  <!-- Wrap the room content inside an anchor tag with a link to roomDetails page -->
+                  <a class="text-decoration-none text-reset"
+                    href="<?php echo $userId && !empty($userId) ? 'roomDetails.php?userId=' . $userId . '&rID=' . $room['rID'] : 'roomDetails.php?rID=' . $room['rID']; ?>">
+                    <img src="<?php echo $firstPictureUrl; ?>" alt="" class="card-img rounded rounded-3"
+                      style="width: 300px; height: 200px; object-fit: cover;" />
+                  </a>
+                <?php endif; ?>
+              </div>
+              <div class="pt-2 mt-3 mt-lg-5">
+                <?php if (isset($room['title'])): ?>
+                  <!-- Wrap the room title inside an anchor tag with a link to roomDetails page -->
+                  <a class="text-decoration-none text-reset"
+                    href="<?php echo $userId && !empty($userId) ? 'roomDetails.php?userId=' . $userId . '&rID=' . $room['rID'] : 'roomDetails.php?rID=' . $room['rID']; ?>">
+                    <h2 class="<?php echo $room['rID'] % 2 === 0 ? 'text-lg-end' : ''; ?>">
+                      <?php echo $room['title']; ?>
+                    </h2>
+                  </a>
+                <?php endif; ?>
+                <?php if (isset($room['description'])): ?>
+                  <p class="<?php echo $room['rID'] % 2 === 0 ? 'text-lg-end' : ''; ?>">
+                    <?php echo truncateText($room['description'], 150); ?>
+                  </p>
+                <?php endif; ?>
+              </div>
             </div>
           </div>
-        </div>
+        <?php endif; ?>
       <?php endforeach; ?>
     </div>
   </section>

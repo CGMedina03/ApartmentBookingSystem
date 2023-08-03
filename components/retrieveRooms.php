@@ -16,7 +16,7 @@ if ($result) {
     // Fetch the data from the result set and store it in the $rooms array
     while ($row = mysqli_fetch_assoc($result)) {
         // Filter out rooms with "Reserved" status
-        if ($row['status'] !== 'Reserved') {
+        if ($row['status'] !== '') {
             $rooms[] = $row;
         }
     }
