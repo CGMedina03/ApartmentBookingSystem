@@ -67,9 +67,9 @@ if (isset($_GET['id'])) {
                         <?php echo $addsons['price']; ?>
                     </td>
                     <td>
-                        <a class="btn rounded-pill btn-secondary"
+                        <a class="btn rounded-pill btn-warning my-3"
                             href="updateAmme.php?userId=<?php echo $userId; ?>&id=<?php echo $addsons['id']; ?>">Update</a>
-                        <a class="btn rounded-pill btn-warning"
+                        <a class="btn rounded-pill btn-secondary "
                             href="addOns.php?userId=<?php echo $userId; ?>&id=<?php echo $addsons['id']; ?>">Delete</a>
                     </td>
                 </tr>

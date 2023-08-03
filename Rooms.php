@@ -69,9 +69,9 @@ if (isset($_GET['rID'])) {
                         <?php echo $room['price']; ?>
                     </td>
                     <td>
-                        <a class="btn rounded-pill btn-secondary"
+                        <a class="btn rounded-pill btn-warning my-3"
                             href="UpdateRoom.php?userId=<?php echo $userId; ?>&rID=<?php echo $room['rID']; ?>">Update</a>
-                        <a class="btn rounded-pill btn-warning"
+                        <a class="btn rounded-pill btn-secondary"
                             href="Rooms.php?userId=<?php echo $userId; ?>&rID=<?php echo $room['rID']; ?>">Delete</a>
                     </td>
                 </tr>
