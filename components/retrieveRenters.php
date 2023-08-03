@@ -14,15 +14,4 @@ if ($result->num_rows > 0) {
     }
 }
 
-// Check if the current user is a renter
-$isRenter = false;
-foreach ($rented as $renter) {
-    if ($renter['email'] == $email) {
-        $isRenter = true;
-        $advancePayment = $renter['advancePayment'];
-        $title = $renter['title'];
-        break;
-    }
-}
-
 ?>
