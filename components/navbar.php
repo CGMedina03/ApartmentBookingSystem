@@ -58,12 +58,17 @@ require 'layout.php';
         border-radius: 10px;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+
+    .img-logo {
+        width: 60px;
+        height: 60px;
+    }
 </style>
 </head>
 
 <body>
     <!-- navlist and title -->
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-warning-subtle">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvas"
                 aria-controls="offCanvas">
@@ -73,8 +78,11 @@ require 'layout.php';
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </a>
-            <span class="fw-bold flex-grow-1 text-end d-none d-md-block">Rizal Park's Apartment Booking System</span>
-            <span class="fw-bold flex-grow-1 text-end d-block d-md-none">RPABS</span>
+
+            <span class="fw-bold flex-grow-1 text-end d-none d-md-block text-black"> <img
+                    src="assets\LOGO-removebg-preview.png" alt="" class="img-logo me-2">Rizal Park's Apartment Booking
+                System</span>
+            <span class="fw-bold flex-grow-1 text-end d-block d-md-none text-black">RPABS</span>
         </div>
         <!-- start of offcanvas -->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvas" aria-labelledby="offCanvasLabel"

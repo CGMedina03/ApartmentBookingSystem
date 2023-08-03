@@ -26,7 +26,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
 <title>RPABS</title>
 </head>
 
-<body class="bg-body-secondary">
+<body class=" bg-dark text-white">
   <?php require 'components/navbar.php';
 
   if (isset($_SESSION['successMessage'])) {
@@ -45,8 +45,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
       <div class="col col-12 col-lg-2"></div>
       <!-- start of the carousel -->
       <div class="col col-12 col-lg-8">
-        <div id="carousel" class="carousel slide carousel-dark bg-danger-subtle rounded rounded-3 shadow"
-          data-bs-ride="carousel">
+        <div id="carousel" class="carousel slide bg-danger-subtle rounded rounded-3 shadow" data-bs-ride="carousel">
           <!-- carousel indicators -->
           <div class="d-block d-xl-none">
             <div class="carousel-indicators">
@@ -86,7 +85,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
         <!-- buttons for carousel -->
         <button class="carouselBtn carousel-control-prev d-none d-xl-block" type="button" data-bs-target="#carousel"
           data-bs-slide="prev">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" class="bi bi-caret-left"
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-caret-left"
             viewBox="0 0 16 16">
             <path
               d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
@@ -95,7 +94,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
         </button>
         <button class="carouselBtn carousel-control-next  d-none d-xl-block" type="button" data-bs-target="#carousel"
           data-bs-slide="next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" class="bi bi-caret-right"
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-caret-right"
             viewBox="0 0 16 16">
             <path
               d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
@@ -153,7 +152,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
   </section>
   <!-- adds on -->
   <section id="addson">
-    <div class="container-fluid bg-danger-subtle pt-3">
+    <div class="container-fluid bg-warning-subtle text-black pt-3">
       <h1 class="text-center">Adds on</h1>
       <p class="text-center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non nulla expedita quos dolorem. Nostrum vitae fugiat,
@@ -259,7 +258,7 @@ $evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
   </section>
   <!-- footer -->
   <footer>
-    <div class="bg-danger pb-1 sticky-bottom">
+    <div class="bg-dark-subtle pb-1 sticky-bottom">
       <p class="text-center text-white align-bottom">
         Read all Terms and Conditions. All rights reseve 2023 ©
       </p>
