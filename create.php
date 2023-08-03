@@ -122,7 +122,7 @@ require 'components/navbar.php';
     <div class="card shadow-lg bg-body-secondary text-black" style="max-width: 50rem; height: auto">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="assets/pexels-thorsten-technoman-338504.jpg"
+          <img src="assets\raspberry-g45bba1097_1280.jpg"
             class="img-fluid rounded-start object-fit-cover h-100 d-none d-md-block" />
         </div>
         <div class="col-12 col-md-8">

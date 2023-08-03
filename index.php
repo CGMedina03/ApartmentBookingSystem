@@ -68,24 +68,22 @@ function truncateText($text, $length = 100)
           </div>
           <div class="carousel-inner ">
             <div class="carousel-item active">
-              <img src="assets/pexels-thorsten-technoman-338504.jpg" class=" d-block  rounded rounded-3 w-100"
-                alt="...">
-              <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end pe-3">
+              <img src="assets\Screenshot 2023-08-03 235651.jpg" class=" d-block  rounded rounded-3 w-100" alt="">
+              <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end text-black pe-3">
                 <h5>First slide label</h5>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque iusto accusantium dolorem dignissimos
                   quo quisquam qui ullam possimus nulla porro?.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="uploads\Yae-Miko-birthday-art-2022-genshinimpact.jpg" class=" d-block  rounded rounded-3 w-100"
-                alt="...">
+              <img src="assets\Screenshot 2023-08-03 235955.jpg" class=" d-block  rounded rounded-3 w-100" alt="...">
               <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end pe-3">
                 <h5>Second slide label</h5>
                 <p>Some representative placeholder content for the second slide.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="uploads\F0kQliLXsAEi8ic.jpg" class=" d-block  rounded rounded-3 w-100" alt="...">
+              <img src="assets\maxresdefault.jpg" class=" d-block  rounded rounded-3 w-100" alt="...">
               <div class="carousel-caption d-none d-md-block  position-absolute top-0 end-0 text-end pe-3">
                 <h5>Third slide label</h5>
                 <p>Some representative placeholder content for the third slide.</p>
