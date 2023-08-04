@@ -70,16 +70,16 @@ function truncateText($text, $length = 100)
             <div class="carousel-item active">
               <img src="assets\Screenshot 2023-08-03 235651.jpg" class=" d-block  rounded rounded-3 w-100" alt="">
               <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end text-black pe-3">
-                <h5>First slide label</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque iusto accusantium dolorem dignissimos
-                  quo quisquam qui ullam possimus nulla porro?.</p>
+                <h5>Entrance of the location</h5>
+                <p>This is what the custoner will see when they go to the REal Calamba where the apartment is located.
+                </p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="assets\Screenshot 2023-08-03 235955.jpg" class=" d-block  rounded rounded-3 w-100" alt="...">
               <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end pe-3">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h5>Map View</h5>
+                <p>This is where the birds eye view of the location of the apartment is located.</p>
               </div>
             </div>
             <div class="carousel-item">
@@ -165,8 +165,7 @@ function truncateText($text, $length = 100)
     <div class="container-fluid bg-dark text-white pt-3">
       <h1 class="text-center">Adds on</h1>
       <p class="text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non nulla expedita quos dolorem. Nostrum vitae fugiat,
-        culpa quis molestiae provident!
+        Our ammenities in Rizal Parks' Apartment
       </p>
       <div class="addson d-flex justify-content-between overflow-x-scroll m-3 m-lg-5">
         <?php
@@ -211,12 +210,10 @@ function truncateText($text, $length = 100)
   <!-- review -->
   <section id="reviews">
     <div class="container-fluid mb-5">
-      <h1 class="text-center">Reviews</h1>
-      <p class="text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ea
-        pariatur velit expedita ullam provident doloremque voluptate assumenda
-        accusamus perspiciatis?
-      </p>
+      <h1 class="text-center">Rate Us</h1>
+      <h2 class="text-center">
+        Leave us a review. Thank you!
+      </h2>
       <div>
         <?php
         // Fetch reviews from the database
@@ -238,7 +235,7 @@ function truncateText($text, $length = 100)
                   </h5>
                   <?php
                   // Display star rating based on the value of $star
-                  for ($i = 1; $i <= 5; $i++) {
+                  for ($i = 1; $i <= $star; $i++) {
                     $starClass = ($i <= $star) ? 'bi-star-fill' : 'bi-star';
                     ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
