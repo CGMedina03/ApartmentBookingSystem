@@ -22,18 +22,7 @@ function truncateText($text, $length = 100)
 }
 
 ?>
-<style>
-  .carouselBtn {
-    margin: 0 150px;
-  }
-
-  .carousel-inner img {
-    width: 100%;
-    height: 30em;
-    object-fit: cover;
-    margin: 0 auto;
-  }
-</style>
+<link rel="stylesheet" href="css/style.css">
 <title>RPABS</title>
 </head>
 
@@ -50,70 +39,11 @@ function truncateText($text, $length = 100)
   }
   ?>
 
-  <!-- carousel features -->
-  <div class="container pt-3">
-    <div class="row">
-      <div class="col col-12 col-lg-2"></div>
-      <!-- start of the carousel -->
-      <div class="col col-12 col-lg-8">
-        <div id="carousel" class="carousel slide bg-danger-subtle rounded rounded-3 shadow" data-bs-ride="carousel">
-          <!-- carousel indicators -->
-          <div class="d-block d-xl-none">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true"
-                aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-          </div>
-          <div class="carousel-inner ">
-            <div class="carousel-item active">
-              <img src="assets\Screenshot 2023-08-03 235651.jpg" class=" d-block  rounded rounded-3 w-100" alt="">
-              <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end text-black pe-3">
-                <h5>Entrance of the location</h5>
-                <p>This is what the custoner will see when they go to the REal Calamba where the apartment is located.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="assets\Screenshot 2023-08-03 235955.jpg" class=" d-block  rounded rounded-3 w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block position-absolute top-0 end-0 text-end pe-3">
-                <h5>Map View</h5>
-                <p>This is where the birds eye view of the location of the apartment is located.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="assets\maxresdefault.jpg" class=" d-block  rounded rounded-3 w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block  position-absolute top-0 end-0 text-end pe-3">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- buttons for carousel -->
-        <button class="carouselBtn carousel-control-prev d-none d-xl-block" type="button" data-bs-target="#carousel"
-          data-bs-slide="prev">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" class="bi bi-caret-left"
-            viewBox="0 0 16 16">
-            <path
-              d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
-          </svg>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carouselBtn carousel-control-next  d-none d-xl-block" type="button" data-bs-target="#carousel"
-          data-bs-slide="next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" class="bi bi-caret-right"
-            viewBox="0 0 16 16">
-            <path
-              d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-          </svg>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      <div class="col col-4 col-lg-2"></div>
-    </div>
-  </div>
+  <!-- Hero section -->
+  <section class="hero-section">
+    <div class="tinted-overlay"></div>
+    <img src="assets\received_1827848727664560.png" alt="" class="heroImg">
+  </section>
   <hr />
   <!-- rooms -->
   <section id="rooms">

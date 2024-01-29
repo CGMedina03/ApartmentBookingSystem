@@ -25,78 +25,26 @@ if (isset($_GET['userId'])) {
 require 'layout.php';
 ?>
 
-
-<style>
-    .logIn {
-        background: linear-gradient(315deg, #0049ff, #d25f72, #a71a31);
-        background-size: 600% 600%;
-
-        animation: logInButton 13s ease infinite;
-    }
-
-    @keyframes logInButton {
-        0% {
-            background-position: 0% 10%;
-        }
-
-        50% {
-            background-position: 100% 91%;
-        }
-
-        100% {
-            background-position: 0% 10%;
-        }
-    }
-
-    .addson::-webkit-scrollbar {
-        background-color: transparent;
-    }
-
-    .addson::-webkit-scrollbar-thumb {
-        border: 1px solid #9d8189;
-        border-radius: 10px;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-        background: rgb(2, 0, 36);
-        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(83, 83, 158, 1) 35%, rgba(66, 118, 129, 1) 100%);
-    }
-
-    .img-logo {
-        width: 60px;
-        height: 60px;
-    }
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-body-secondary">
+<body class="bg-body-secondary p-5">
     <!-- navlist and title -->
-    <nav class="navbar bg-dark text-white">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvas"
-                aria-controls="offCanvas">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="index.php<?php echo $userId ? '?userId=' . $userId : ''; ?>">
+                <img src="assets\LOGO-removebg-preview.png" alt="" class="img-logo me-2">
+                Rizal Park's Apartment Booking System
             </a>
-            <span class="fw-bold flex-grow-1 text-end d-none d-md-block"> <img src="assets\LOGO-removebg-preview.png"
-                    alt="" class="img-logo me-2">Rizal Park's Apartment Booking
-                System</span>
-            <span class="fw-bold flex-grow-1 text-end d-block d-md-none">RPABS</span>
-        </div>
-        <!-- start of offcanvas -->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvas" aria-labelledby="offCanvasLabel"
-            data-bs-theme="dark">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offCanvaLabel">
-                    <a href="index.php<?php echo $userId ? '?userId=' . $userId : ''; ?>"
-                        class="text-decoration-none text-white">RPABS</a>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="list-unstyled ms-4">
-                    <li class="mt-3">
+            <!-- Toggler for small screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- start of navbar -->
+            <div class="collapse navbar-collapse" id="navbarNav" data-bs-theme="dark">
+                <ul class="navbar-nav ms-auto m-3">
+                    <li class="mx-3">
                         <?php if (!isset($_GET['userId'])): ?>
                             <a href="login.php" class="text-decoration-none text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -130,8 +78,7 @@ require 'layout.php';
                             </a>
                         <?php endif; ?>
                     </li>
-
-                    <li class="mt-4">
+                    <li class="mx-3">
                         <a href="index.php<?php echo $userId ? '?userId=' . $userId : ''; ?>#rooms"
                             class="text-decoration-none text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -142,7 +89,7 @@ require 'layout.php';
                             Rooms
                         </a>
                     </li>
-                    <li class="mt-4">
+                    <li class="mx-3">
                         <a href="index.php<?php echo $userId ? '?userId=' . $userId : ''; ?>#addson"
                             class="text-decoration-none text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -153,7 +100,7 @@ require 'layout.php';
                             Adds-on
                         </a>
                     </li>
-                    <li class="mt-4">
+                    <li class="mx-3">
                         <a href="index.php<?php echo $userId ? '?userId=' . $userId : ''; ?>#reviews"
                             class="text-decoration-none text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -165,23 +112,26 @@ require 'layout.php';
                         </a>
                     </li>
                 </ul>
-                <div class="mt-5 d-flex justify-content-center">
-                    <button class="btn btn-lg logIn">
+                <!-- Log In button -->
+                <div class="d-flex justify-content-center mt-3 mt-md-0">
+                    <button class="btn btn-lg logIn text-white">
                         <?php echo $logoutButton; ?>
                     </button>
                 </div>
             </div>
-        </div>
     </nav>
     <script>
-        const offcanvasElement = document.querySelector('#offCanvas');
-        const offcanvasItems = offcanvasElement.querySelectorAll('li');
+        // Check if the current page is index.php
+        if (window.location.pathname.includes("index.php")) {
+            const navbar = document.getElementById('navbar');
 
-        offcanvasItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
-                offcanvas.hide();
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 0) {
+                    navbar.classList.add('bg-dark'); // Add Bootstrap class for dark background
+                } else {
+                    navbar.classList.remove('bg-dark'); // Remove Bootstrap class for transparent background
+                }
             });
-        });
+        }
 
     </script>

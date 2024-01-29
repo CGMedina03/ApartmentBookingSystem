@@ -109,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php
 require 'components/navbar.php';
 ?>
+<link rel="stylesheet" href="css/style.css">
 <style>
   .toggle-icon {
     cursor: pointer;

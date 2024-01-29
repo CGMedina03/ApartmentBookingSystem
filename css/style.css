@@ -1,0 +1,101 @@
+/* navbar */
+.logIn {
+  background: linear-gradient(315deg, #0049ff, #d25f72, #a71a31);
+  background-size: 600% 600%;
+
+  animation: logInButton 13s ease infinite;
+}
+
+@keyframes logInButton {
+  0% {
+    background-position: 0% 10%;
+  }
+
+  50% {
+    background-position: 100% 91%;
+  }
+
+  100% {
+    background-position: 0% 10%;
+  }
+}
+
+.addson::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+.addson::-webkit-scrollbar-thumb {
+  border: 1px solid #9d8189;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(83, 83, 158, 1) 35%,
+    rgba(66, 118, 129, 1) 100%
+  );
+}
+
+.img-logo {
+  width: 60px;
+  height: 60px;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 3;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.dark {
+  background-color: #333;
+}
+
+/* hero section */
+.hero-section {
+  position: relative;
+}
+
+.tinted-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the alpha value (0.5) to control the tint intensity */
+  z-index: 2; /* Place the overlay behind the image */
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1; /* Place the image on top of the overlay */
+}
+/* dashboard admin */
+#bookingTrendsChartContainer {
+  overflow-x: scroll;
+}
+
+#bookingTrendsChart {
+  width: 100%;
+  height: auto;
+}
+
+/* CSS to make the canvas responsive on smaller screens */
+@media (max-width: 600px) {
+  #bookingTrendsChart {
+    width: 400px;
+    height: 400px;
+  }
+}
