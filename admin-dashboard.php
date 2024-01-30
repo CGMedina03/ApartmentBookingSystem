@@ -2,7 +2,7 @@
 require 'components/move.php';
 require 'components/renters.php';
 require 'components/retrieveNotif.php';
-
+require 'components/navbar.php';
 // Initialize an empty array to store user data
 $appointment = [];
 
@@ -116,12 +116,10 @@ $trendsData = array(
 
 // Encode the combined data array into JSON
 $trendsDataJson = json_encode($trendsData);
-
-require 'components/navbar.php';
 ?>
+
 <link rel="stylesheet" href="css/style.css">
 <title>Dashboard</title>
-</head>
 
 <?php
 if (isset($_SESSION['errorMessage'])) {

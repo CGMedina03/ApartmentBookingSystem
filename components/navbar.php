@@ -28,7 +28,7 @@ require 'layout.php';
 <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-body-secondary p-5">
+<body class="bg-body-secondary">
     <!-- navlist and title -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navbar">
         <div class="container-fluid">
@@ -135,3 +135,5 @@ require 'layout.php';
         }
 
     </script>
+
+    <body>

@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_password']) && is
 }
 ?>
 <title>Reset Password</title>
-<div class="container mt-4">
+<div class="container mt-5 pt-5">
     <h2>Reset your password here</h2>
     <?php
     // Display error message if applicable

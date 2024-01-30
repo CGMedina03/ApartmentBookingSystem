@@ -53,7 +53,7 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
 
 <title>Room Details</title>
 </head>
-<div class="container mt-0 mt-lg-5">
+<div class="container mt-5 pt-5 mt-lg-5">
     <div class="row mb-3 mb-lg-5">
         <!-- room pics -->
         <div class="col-lg-6 mb-3">

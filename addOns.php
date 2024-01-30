@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 ?>
-<div class="container">
+<div class="container  mt-3 pt-3 mt-lg-5 pt-lg-5">
     <h2>Ammeneties</h2>
     <a href="addNewAmme.php?userId=<?php echo $userId; ?>" class="btn rounded-pill btn-dark my-3">Add Ammeneties</a>
     <table class="table table-light table-striped">

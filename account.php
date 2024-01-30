@@ -5,6 +5,7 @@ require 'components/retrieveRenters.php';
 require 'components/layout.php';
 require 'components/retrieveRooms.php';
 
+
 // Check if the current user is a renter and get the rented title
 $isRenter = false;
 $title = "";
@@ -68,7 +69,41 @@ if ($isRenter && isset($title) && !empty($renter)) {
     }
   }
 }
+// Check if the form is submitted
+if (isset($_POST['proceedButton'])) {
+  // Get the selected payment option
+  $selectedPaymentOption = isset($_POST['paymentOption']) ? $_POST['paymentOption'] : '';
 
+  // Determine the redirect page based on the selected payment option
+  $redirectPage = '';
+  switch ($selectedPaymentOption) {
+    case 'gcash':
+      $redirectPage = 'gcash.php';
+      break;
+    case 'debitCard':
+      $redirectPage = 'debitCreditCard.php';
+      break;
+    case 'creditCard':
+      $redirectPage = 'debitCreditCard.php';
+      break;
+    // Add more cases for additional payment options if needed
+
+    default:
+      // Default redirect page if no valid option is selected
+      $redirectPage = 'defaultRedirect.php';
+      break;
+  }
+
+  // Debugging: Print current URL parameters
+  echo "Current URL Parameters: " . http_build_query($_GET);
+
+  // Extract userId from the current URL parameters
+  $currentUserId = isset($_GET['userId']) ? $_GET['userId'] : '';
+
+  // Redirect to the determined page with the userId from the current URL
+  header("Location: $redirectPage?userId=$currentUserId");
+  exit(); // Stop further execution
+}
 ?>
 <style>
   .danger-counter,
@@ -79,7 +114,7 @@ if ($isRenter && isset($title) && !empty($renter)) {
 <title>Profile Account</title>
 </head>
 
-<body class="text-black bg-body-secondary">
+<body class="text-black bg-body-secondary mt-5 pt-5">
   <?php require 'components/navbar.php'; ?>
   <div class="container-md">
 
@@ -143,6 +178,55 @@ if ($isRenter && isset($title) && !empty($renter)) {
                       <?php echo $advancePayment; ?>
                     </strong></p>
                 <?php endif; ?>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#modal">
+                  Payment
+                </button>
+                <!-- Modal -->
+                <div class="modal fade text-black" id="modal" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <input type="hidden" name="userId"
+                        value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>">
+                      <!-- payment method -->
+                      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <div class="modal-body">
+                          <h4>Choose your payment</h4>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentOption" id="gcash" value="gcash">
+                            <label class="form-check-label" for="gcash">
+                              Gcash
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentOption" id="debitCard"
+                              value="debitCard">
+                            <label class="form-check-label" for="debitCard">
+                              Debit Card
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentOption" id="creditCard"
+                              value="creditCard">
+                            <label class="form-check-label" for="creditCard">
+                              Credit Card
+                            </label>
+                          </div>
+                          <input type="hidden" name="redirectPage" value="">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary" name="proceedButton">Proceed</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -119,7 +119,7 @@ require 'components/navbar.php';
 </head>
 
 <body>
-  <div class="container my-3 mt-lg-4 d-flex flex-row-reverse justify-content-center align-items-center">
+  <div class="container my-3 mt-lg-5 pt-lg-5 pt-3 d-flex flex-row-reverse justify-content-center align-items-center">
     <div class="card shadow-lg bg-body-secondary text-black" style="max-width: 50rem; height: auto">
       <div class="row g-0">
         <div class="col-md-4">

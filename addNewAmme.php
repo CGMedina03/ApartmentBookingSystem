@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require 'components/navbar.php';
 ?>
 <title>Add new Ammenity</title>
-<div class="container">
+<div class="container  mt-3 pt-3 mt-lg-5 pt-lg-5">
     <h2>Add New addsOns</h2>
     <!-- Display error messages if any -->
     <?php if (!empty($errors)): ?>

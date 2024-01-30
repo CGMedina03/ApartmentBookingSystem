@@ -72,7 +72,7 @@ require 'components/navbar.php';
 ?>
 <title>Update Room</title>
 
-<div class="container">
+<div class="container  mt-3 pt-3 mt-lg-5 pt-lg-5">
     <h2>Update rooms</h2>
     <!-- Display error messages if any -->
     <?php if (!empty($errors)): ?>

@@ -55,7 +55,7 @@ require 'components/navbar.php';
 </head>
 
 
-<div class="container pt-4 pt-lg-0 d-flex justify-content-center align-items-center mt-0 mt-lg-5 ">
+<div class="container pt-3 pt-lg-5 d-flex justify-content-center align-items-center mt-3 mt-lg-5 ">
   <div class="card shadow-lg bg-body-secondary text-black" style="max-width: 30rem; height: auto">
     <div class="row g-0">
       <div class="col-md-4">
