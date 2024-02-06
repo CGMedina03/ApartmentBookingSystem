@@ -30,7 +30,7 @@ require 'layout.php';
 
 <body class="bg-body-secondary">
     <!-- navlist and title -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navbar">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-lg" id="navbar">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="index.php<?php echo $userId ? '?userId=' . $userId : ''; ?>">
                 <img src="assets\LOGO-removebg-preview.png" alt="" class="img-logo me-2">

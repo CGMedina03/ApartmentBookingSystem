@@ -156,8 +156,10 @@ require 'components/navbar.php';
 ?>
 <title>Update Profile</title>
 </head>
-
-<div class="container-lg my-3 my-md-5 col-10 col-md-6 shadow p-3 p-md-5 rounded-3 rounded-md-5">
+<div class="mt-4 pt-4">
+    <h1></h1>
+</div>
+<div class="container-lg mt-5 pt-5 my-3 my-md-5 col-10 col-md-6 shadow p-3 p-md-5 rounded-3 rounded-md-5">
     <?php if (!empty($errorMessage)): ?>
         <div class="alert alert-danger" role="alert">
             <?php echo $errorMessage; ?>

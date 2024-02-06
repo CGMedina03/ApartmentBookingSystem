@@ -80,7 +80,9 @@ ob_end_flush();
 ?>
 
 <title>Review</title>
-
+<div class="mt-4 pt-4">
+    <h1></h1>
+</div>
 <div class="container shadow my-5 p-5 ">
     <h2>Kindly leave us a review</h2>
     <?php if ($errorMessage): ?>
