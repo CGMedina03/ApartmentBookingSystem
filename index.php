@@ -43,6 +43,7 @@ function truncateText($text, $length = 100)
   <section class="hero-section">
     <div class="tinted-overlay"></div>
     <img src="assets\received_1827848727664560.png" alt="" class="heroImg">
+    <!-- scroll down button -->
     <button class="floatingButton p-3" onclick="scrollDown()">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down"
         viewBox="0 0 20 20">
@@ -51,6 +52,12 @@ function truncateText($text, $length = 100)
       </svg>Scroll down
     </button>
   </section>
+  <div class="advertImg">
+    <img src="assets\20240128_095737_0000.png" alt="">
+  </div>
+  <div class="advertImg2">
+    <img src="assets\Grey Real State Apartment For Rent Instagram Story_20240127_195254_0000.png" alt="">
+  </div>
   <hr />
   <!-- rooms -->
   <section id="rooms">

@@ -50,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 }
 require 'components/navbar.php';
 ?>
-
+<link rel="stylesheet" href="css/style.css">
 <title>Log In</title>
 </head>
 
-
+<div class="bgLogIn"></div>
 <div class="container pt-3 pt-lg-5 d-flex justify-content-center align-items-center mt-3 mt-lg-5 ">
   <div class="card shadow-lg bg-body-secondary text-black" style="max-width: 30rem; height: auto">
     <div class="row g-0">
@@ -117,7 +117,7 @@ require 'components/navbar.php';
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <button type="submit" class="btn m-3 btn-outline-dark rounded-5">Log in</button>
+              <button type="submit" class="btn m-3 btn-outline-dark rounded-5 glow-on-hover">Log in</button>
             </div>
           </form>
           <div class="p-3">

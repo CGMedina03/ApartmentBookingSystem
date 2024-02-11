@@ -47,7 +47,7 @@
   left: 0;
   width: 100%;
   background-color: transparent;
-  z-index: 4;
+  z-index: 6;
   transition: background-color 0.3s ease;
 }
 
@@ -58,8 +58,9 @@
 /* hero section */
 .hero-section {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
-
 .tinted-overlay {
   position: absolute;
   top: 0;
@@ -77,7 +78,6 @@
   position: relative;
   z-index: 1;
 }
-
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.7);
@@ -86,10 +86,35 @@
     box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
   }
 }
-
+.advertImg {
+  position: absolute;
+  top: 15%;
+  left: 40%;
+  width: 300px;
+  height: auto;
+  z-index: 4;
+}
+.advertImg img {
+  border-radius: 10px;
+  width: 100%;
+}
+/* advert img 2 */
+.advertImg2 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 300px;
+  height: auto;
+  z-index: 5;
+}
+.advertImg2 img {
+  border-radius: 10px;
+  width: 100%;
+}
+/* button scroll */
 .floatingButton {
   background-color: rgb(103, 102, 102);
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   position: absolute;
   top: 70%;
   left: 80%;
@@ -131,10 +156,32 @@
   height: auto;
 }
 
-/* CSS to make the canvas responsive on smaller screens */
 @media (max-width: 600px) {
   #bookingTrendsChart {
     width: 400px;
     height: 400px;
   }
+}
+
+/* login background */
+.bgLogIn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/received_1827848727664560.png");
+  background-size: contain;
+  z-index: -1;
+}
+.bgLogIn::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  padding-left: 300px;
+  box-sizing: border-box;
+  box-shadow: inset -700px 0 50px 0 #e9ecef;
 }
