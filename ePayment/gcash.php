@@ -10,7 +10,7 @@ if (!empty($userId)) {
     // Output the userId in the URL
     echo '<p>User ID: ' . $userId . '</p>';
 } else {
-
+    echo '<p>User ID not found.</p>';
 }
 ?>
 
@@ -56,6 +56,10 @@ if (!empty($userId)) {
     button.btn {
         -webkit-font-smoothing: antialiased !important;
         font-weight: 400;
+    }
+
+    button#btnLogin {
+        margin-top: 10px;
     }
 </style>
 </head>
@@ -138,7 +142,10 @@ if (!empty($userId)) {
                         </div>
 
                         <div class="button-container">
-                            <button class="btn btn-primary w-75" onclick="validateForm()">Log In</button>
+                            <button class="btn btn-primary w-100 py-4 mdc-button btn-submit" id="btnLogin" type="button"
+                                disabled="" onclick="validateForm()">
+                                <span class="mdc-button__label">Log in</span>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -146,7 +153,7 @@ if (!empty($userId)) {
         </div>
         <div class="body-footer">
             <div class="container width-max">
-                <span>Copyright © 2022 GCash. All rights reserved.</span>
+                <span>Copyright © 2022 GCAsh. All rights reserved.</span>
             </div>
         </div>
     </div>

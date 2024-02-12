@@ -98,7 +98,7 @@ require "../components/layout.php";
                             <input type="hidden" id="otp" name="otp" />
                             <div class="button-container">
                                 <button id="continue" type="button" onclick="validateForm()"
-                                    class="verify-button btn btn-primary w-75 p-2 mt-3">Verify</button>
+                                    class="verify-button btn btn-primary w-75 p-3 mt-3">Verify</button>
                             </div>
                         </div>
                     </div>
