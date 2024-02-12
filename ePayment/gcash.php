@@ -5,13 +5,6 @@ require "../components/layout.php";
 // Retrieve userId from session
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
 
-// Check if userId is available
-if (!empty($userId)) {
-    // Output the userId in the URL
-    echo '<p>User ID: ' . $userId . '</p>';
-} else {
-    echo '<p>User ID not found.</p>';
-}
 ?>
 
 <meta charset="utf-8" />
@@ -47,7 +40,7 @@ if (!empty($userId)) {
     body {
         font-family: "CerebriSansPro", sans-serif;
         line-height: 1.42857143;
-        margin: 0;
+        margin-top: -40px;
         color: #000;
     }
 

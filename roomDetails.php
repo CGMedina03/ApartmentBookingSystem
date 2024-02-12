@@ -19,6 +19,7 @@ if (isset($_GET['rID'])) {
     if ($selectedRoom) {
         $title = $selectedRoom['title'];
         $description = $selectedRoom['description'];
+        $roomSize = $selectedRoom['roomSize'];
         $picture = $selectedRoom['picture'];
         $price = $selectedRoom['price'];
 
@@ -101,6 +102,14 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col col-12">
+                        <p>
+                            Only
+                            <strong>
+                                <?php echo $roomSize; ?>
+                            </strong>Person(s) can be acommodated here.
+                        </p>
+                    </div>
                     <div class="col col-12">
                         <p>
                             <?php echo $description; ?>

@@ -30,6 +30,7 @@ if (isset($_GET['rID'])) {
                 <th>Title</th>
                 <th>Picture</th>
                 <th>Description</th>
+                <th>Room size</th>
                 <th>Status</th>
                 <th>Price</th>
                 <th>Action</th>
@@ -61,6 +62,9 @@ if (isset($_GET['rID'])) {
                     </td>
                     <td>
                         <?php echo $room['description']; ?>
+                    </td>
+                    <td>
+                        <?php echo $room['roomSize']; ?> Person(s) can fit
                     </td>
                     <td>
                         <?php echo $room['status']; ?>

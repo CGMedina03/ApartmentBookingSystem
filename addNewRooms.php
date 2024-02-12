@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roomTitle = $_POST['title'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+    $roomSize = $_POST['roomSize'];
     $roomTitle = htmlspecialchars($roomTitle);
     $price = htmlspecialchars($price);
     $description = htmlspecialchars($description);
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     // Insert data into the database
     $picturePaths = implode("\n", $picturePaths); // Concatenate filenames with a comma (adjust as per your database schema)
-    $query = "INSERT INTO rooms (title, description, picture, price, status) VALUES ('$roomTitle', '$description', '$picturePaths', '$price', 'Available')";
+    $query = "INSERT INTO rooms (title, description, roomSize, picture, price, status) VALUES ('$roomTitle', '$description', '$roomSize', '$picturePaths', '$price', 'Available')";
 
     if (mysqli_query($conn, $query)) {
         // After successful update
@@ -75,8 +76,12 @@ require 'components/navbar.php';
             <input type="text" class="form-control" name="description" id="validationDefault02" required>
         </div>
         <div class="col-md-4">
-            <label for="validationDefault03" class="form-label">Price</label>
-            <input type="number" class="form-control" name="price" id="validationDefault03" required>
+            <label for="validationDefault03" class="form-label">Room size</label>
+            <input type="number" class="form-control" name="roomSize" id="validationDefault03" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefault04" class="form-label">Price</label>
+            <input type="number" class="form-control" name="price" id="validationDefault04" required>
         </div>
         <div class="mb-3">
             <label for="formFileMultiple" class="form-label">Pictures</label>

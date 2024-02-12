@@ -77,6 +77,8 @@ if ($isRenter && isset($title) && !empty($renter)) {
 
 // Check if the form is submitted
 if (isset($_POST['proceedButton'])) {
+  // Extract userId from the current URL parameters
+  $_SESSION['userId'] = isset($_GET['userId']) ? $_GET['userId'] : '';
   // Get the selected payment option
   $selectedPaymentOption = isset($_POST['paymentOption']) ? $_POST['paymentOption'] : '';
 
@@ -84,7 +86,7 @@ if (isset($_POST['proceedButton'])) {
   $redirectPage = '';
   switch ($selectedPaymentOption) {
     case 'gcash':
-      $redirectPage = 'ePayment/gcash.php?';
+      $redirectPage = 'ePayment/gcash.php';
       break;
     case 'debitCard':
     case 'creditCard':
