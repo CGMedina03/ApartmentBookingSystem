@@ -1,102 +1,161 @@
 <?php
-require "components/layout.php";
-$userId = isset($_GET['userId']) ? $_GET['userId'] : null;
+session_start();
 
+// Retrieve userId from session
+$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+
+// Retrieve selected payment option from form submission
+$selectedPaymentOption = isset($_POST['paymentOption']) ? $_POST['paymentOption'] : '';
+
+echo "User ID: $userId<br>";
+echo "Selected Payment Option: $selectedPaymentOption";
 ?>
+
 <style>
-    .payment-title {
+    body {
+        overflow-x: hidden;
+    }
+
+    .row {
+        display: -ms-flexbox;
+        /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap;
+        /* IE10 */
+        flex-wrap: wrap;
+        margin: 30px 0;
+    }
+
+    .col-75 {
+        -ms-flex: 75%;
+        /* IE10 */
+        flex: 75%;
+        padding: 0 16px;
+    }
+
+    .container {
+        background-color: #f2f2f2;
+        padding: 5px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
         width: 100%;
-        text-align: center;
-    }
-
-    .form-container .field-container:first-of-type {
-        grid-area: name;
-    }
-
-    .form-container .field-container:nth-of-type(2) {
-        grid-area: number;
-    }
-
-    .form-container .field-container:nth-of-type(3) {
-        grid-area: expiration;
-    }
-
-    .form-container .field-container:nth-of-type(4) {
-        grid-area: security;
-    }
-
-    .field-container input {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    .field-container {
-        position: relative;
-    }
-
-    .form-container {
-        display: grid;
-        grid-column-gap: 10px;
-        grid-template-columns: auto auto;
-        grid-template-rows: 90px 90px 90px;
-        grid-template-areas: "name name" "number number" "expiration security";
-        max-width: 400px;
-        padding: 20px;
-        color: #707070;
+        margin-bottom: 0px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
     }
 
     label {
-        padding-bottom: 5px;
-        font-size: 13px;
+        margin-bottom: 10px;
+        display: block;
     }
 
-    input {
-        margin-top: 3px;
-        padding: 15px;
-        font-size: 16px;
+    .icon-container {
+        margin-bottom: 20px;
+        padding: 7px 0;
+        font-size: 24px;
+    }
+
+    .btn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
         width: 100%;
         border-radius: 3px;
-        border: 1px solid #dcdcdc;
+        cursor: pointer;
+        font-size: 17px;
     }
 
-    .ccicon {
-        height: 38px;
-        position: absolute;
-        right: 6px;
-        top: calc(50% - 17px);
-        width: 60px;
+    .btn:hover {
+        background-color: #45a049;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 800px) {
+        .row {
+            flex-direction: column-reverse;
+        }
+
+        .col-25 {
+            margin-bottom: 20px;
+        }
+    }
+
+    #general-error {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .input-group .input-group-text {
+        height: 100%;
     }
 </style>
+<title>Card Payment</title>
 </head>
 
-<body class=" container-fluid text-center">
-    <div class="payment-title">
-        <h1>Payment Information</h1>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form action="..\account.php" method="post" onsubmit="return validateForm()">
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Payment</h3>
+                        <div class="col-50">
+                            <label>Card Type</label>
+                            <h4 id="cardtype-display"></h4>
+                        </div>
+                        <label for="cname">Card name</label>
+                        <input type="text" id="cname" name="cardname" placeholder="John More Doe" required />
+                        <div id="cname-error" class="error-message"></div>
+                        <label for="ccnum">Card number</label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111222233334444" required />
+                        <div id="ccnum-error" class="error-message"></div>
+                        <label for="expmonth">Exp Month</label>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="1" required />
+                        <div id="expmonth-error" class="error-message"></div>
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="expyear">Exp Year</label>
+                                <input type="text" id="expyear" name="expyear" placeholder="2018" required />
+                                <div id="expyear-error" class="error-message"></div>
+                            </div>
+                            <div class="col-50">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="352" required />
+                                <div id="cvv-error" class="error-message"></div>
+                            </div>
+                            <div class="col-50">
+                                <label for="password">Password</label>
+                                <div class="input-group ">
+                                    <input type="password" id="password" name="password" class="form-control" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" onclick="togglePasswordVisibility()">
+                                            <i id="toggle-icon" class="fas fa-eye-slash "></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="password-error" class="error-message"></div>
+                                <span class="text-muted">For the password not enabled, leave the space blank</span>
+                            </div>
+                            <h2 id="general-error" class="error-message"></h2>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Continue to checkout</button>
+            </form>
+        </div>
     </div>
-    <div class="form-container">
-        <div class="field-container">
-            <label for="name">Name</label>
-            <input id="name" type="text">
-        </div>
-        <div class="field-container">
-            <label for="cardnumber">Card Number</label>
-            <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
-            <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-            </svg>
-        </div>
-        <div class="field-container">
-            <label for="expirationdate">Expiration (mm/yy)</label>
-            <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric">
-        </div>
-        <div class="field-container">
-            <label for="securitycode">Security Code</label>
-            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric">
-        </div>
-        <div class="button">
-            <a href="account.php?userId=<?php echo $userId; ?>" class="btn btn-outline-dark w-100 mt-3 rounded-pill">
-                Proceed to Pay
-            </a>
-        </div>
-    </div>
+</div>
+<script src="js\cardValidation.js">
+</script>
