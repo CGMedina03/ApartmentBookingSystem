@@ -138,10 +138,7 @@ if (!empty($userId)) {
                         </div>
 
                         <div class="button-container">
-                            <button class="continue-button mdc-button btn-submit" id="btnLogin" type="button"
-                                disabled="" onclick="validateForm()">
-                                <span class="mdc-button__label">Log in</span>
-                            </button>
+                            <button class="btn btn-primary w-75" onclick="validateForm()">Log In</button>
                         </div>
                     </form>
                 </div>
