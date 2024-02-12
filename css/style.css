@@ -105,7 +105,7 @@
   left: 10%;
   width: 300px;
   height: auto;
-  z-index: 5;
+  z-index: 4;
 }
 .advertImg2 img {
   border-radius: 10px;
@@ -144,6 +144,104 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* search bar */
+.searchBar {
+  position: absolute;
+  top: 70%;
+  left: 40%;
+  width: 300px;
+  height: auto;
+  z-index: 5;
+  display: flex; /* Add this */
+  align-items: center; /* Add this */
+}
+.inputSearch {
+  width: 200px;
+  margin-right: 10px;
+  flex: 1;
+}
+.searchBtn {
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  animation: pulse 1.5s infinite alternate; /* Apply infinite animation */
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #222; /* Initial color */
+  }
+  100% {
+    background-color: #444; /* Final color */
+  }
+}
+
+/* filter bar */
+.filterBar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.inputFilter {
+  width: 20%;
+  margin-right: 10px;
+}
+.filterBtn {
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 8%;
+}
+
+.filterBtn:hover,
+.filterBtn:focus {
+  opacity: 0.75;
 }
 
 /* dashboard admin */

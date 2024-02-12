@@ -5,11 +5,6 @@ require 'components/retrieveAddsOn.php';
 require 'components/layout.php';
 require 'components/retrieveReviews.php';
 session_start();
-// Assuming $roomNumber contains the room number for each iteration
-$roomNumber = 1; // Replace this with the actual room number
-
-// Add a conditional class based on even/odd room number
-$evenClass = $roomNumber % 2 === 0 ? 'flex-row-reverse' : '';
 
 // Function to truncate the text
 function truncateText($text, $length = 100)
@@ -21,6 +16,26 @@ function truncateText($text, $length = 100)
   return $text;
 }
 
+// Assuming $rooms contains the list of rooms
+$filteredRooms = $rooms; // initially, all rooms are shown
+
+// Handle search
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+  $searchTerm = strtolower($_GET['search']);
+  $filteredRooms = array_filter($rooms, function ($room) use ($searchTerm) {
+    $title = strtolower($room['title']);
+    $description = strtolower($room['description']);
+    return strpos($title, $searchTerm) !== false || strpos($description, $searchTerm) !== false;
+  });
+}
+// Handle filtering by room size
+if (isset($_GET['roomSize']) && !empty($_GET['roomSize'])) {
+  $roomSize = $_GET['roomSize']; // Assuming room size is passed as a parameter
+  $filteredRooms = array_filter($filteredRooms, function ($room) use ($roomSize) {
+    // Assuming room size is stored in the database as 'size'
+    return $room['roomSize'] == $roomSize;
+  });
+}
 ?>
 <link rel="stylesheet" href="css/style.css">
 <title>RPABS</title>
@@ -58,11 +73,38 @@ function truncateText($text, $length = 100)
   <div class="advertImg2">
     <img src="assets\Grey Real State Apartment For Rent Instagram Story_20240127_195254_0000.png" alt="">
   </div>
+  <!-- Search bar -->
+  <form method="GET" action="">
+    <div class="mb-3 searchBar">
+      <input class="inputSearch form-control" type="text" name="userId"
+        value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>" style="display: none;">
+      <input class="inputSearch form-control" type="text" name="search" placeholder="Search rooms..."
+        value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+      <button class="searchBtn" type="submit" role="button"><span class="text">Search</span></button>
+    </div>
+  </form>
+
   <hr />
   <!-- rooms -->
   <section id="rooms">
     <div class="container-sm py-3">
-      <?php foreach ($rooms as $room): ?>
+
+      <!-- Filter form -->
+      <form action="" method="GET">
+        <div class="filterBar">
+          <input class="inputFilter form-control" type="text" name="userId"
+            value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>" style="display: none;">
+          <select name="roomSize" class="inputFilter form-control">
+            <option value="">Select Room Size</option>
+            <option value="1">1 person</option>
+            <option value="2">2 people</option>
+            <option value="3">3 people</option>
+          </select>
+          <button class="filterBtn" type="submit" role="button"><span class="text">Filter</span></button>
+        </div>
+      </form>
+
+      <?php foreach ($filteredRooms as $room): ?>
         <?php if ($room['status'] === 'Available' || $room['status'] === 'Undecided'): ?>
           <div class="mb-3 mx-lg-5 px-lg-5">
             <div class="d-lg-flex <?php echo $room['rID'] % 2 == 0 ? 'flex-row-reverse' : ''; ?>">
