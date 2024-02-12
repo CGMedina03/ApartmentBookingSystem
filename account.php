@@ -5,6 +5,13 @@ require 'components/retrieveRenters.php';
 require 'components/layout.php';
 require 'components/retrieveRooms.php';
 
+// Extract userId from the current URL parameters
+$currentUserId = isset($_GET['userId']) ? $_GET['userId'] : '';
+
+// Store userId in session
+$_SESSION['userId'] = $currentUserId;
+// Debugging: Print userId to check if it's stored in the session
+echo "User ID stored in session: " . $_SESSION['userId'];
 
 // Check if the current user is a renter and get the rented title
 $isRenter = false;
@@ -69,6 +76,10 @@ if ($isRenter && isset($title) && !empty($renter)) {
     }
   }
 }
+
+// Extract userId from the session
+$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+
 // Check if the form is submitted
 if (isset($_POST['proceedButton'])) {
   // Get the selected payment option
@@ -78,30 +89,22 @@ if (isset($_POST['proceedButton'])) {
   $redirectPage = '';
   switch ($selectedPaymentOption) {
     case 'gcash':
-      $redirectPage = 'gcash.php';
+      $redirectPage = 'ePayment\gcash.php';
       break;
     case 'debitCard':
-      $redirectPage = 'debitCreditCard.php';
-      break;
     case 'creditCard':
       $redirectPage = 'debitCreditCard.php';
       break;
-    // Add more cases for additional payment options if needed
-
     default:
       // Default redirect page if no valid option is selected
       $redirectPage = 'defaultRedirect.php';
       break;
   }
 
-  // Debugging: Print current URL parameters
-  echo "Current URL Parameters: " . http_build_query($_GET);
-
-  // Extract userId from the current URL parameters
-  $currentUserId = isset($_GET['userId']) ? $_GET['userId'] : '';
-
-  // Redirect to the determined page with the userId from the current URL
-  header("Location: $redirectPage?userId=$currentUserId");
+  // Redirect to the determined page with the userId from the session
+  // Append userId as a query parameter to the redirectPage URL
+  $redirectUrl = $redirectPage . '?userId=' . urlencode($userId);
+  header("Location: $redirectUrl");
   exit(); // Stop further execution
 }
 ?>
@@ -188,13 +191,13 @@ if (isset($_POST['proceedButton'])) {
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Method</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <input type="hidden" name="userId"
-                        value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>">
                       <!-- payment method -->
-                      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <form action="account.php" method="post">
+                        <!-- Add a hidden input field to include the userId -->
+                        <input type="hidden" name="userId" value="<?php echo htmlspecialchars($currentUserId); ?>">
                         <div class="modal-body">
                           <h4>Choose your payment</h4>
                           <div class="form-check">
@@ -221,6 +224,7 @@ if (isset($_POST['proceedButton'])) {
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
                           <button type="submit" class="btn btn-primary" name="proceedButton">Proceed</button>
                         </div>
                       </form>
