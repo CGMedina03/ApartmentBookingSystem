@@ -6,10 +6,8 @@ require 'components/layout.php';
 require 'components/retrieveRooms.php';
 
 // Extract userId from the current URL parameters
-$currentUserId = isset($_GET['userId']) ? $_GET['userId'] : '';
+$_SESSION['userId'] = isset($_GET['userId']) ? $_GET['userId'] : '';
 
-// Store userId in session
-$_SESSION['userId'] = $currentUserId;
 // Debugging: Print userId to check if it's stored in the session
 echo "User ID stored in session: " . $_SESSION['userId'];
 
@@ -77,9 +75,6 @@ if ($isRenter && isset($title) && !empty($renter)) {
   }
 }
 
-// Extract userId from the session
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-
 // Check if the form is submitted
 if (isset($_POST['proceedButton'])) {
   // Get the selected payment option
@@ -89,7 +84,7 @@ if (isset($_POST['proceedButton'])) {
   $redirectPage = '';
   switch ($selectedPaymentOption) {
     case 'gcash':
-      $redirectPage = 'ePayment\gcash.php';
+      $redirectPage = 'ePayment/gcash.php?';
       break;
     case 'debitCard':
     case 'creditCard':
@@ -100,10 +95,10 @@ if (isset($_POST['proceedButton'])) {
       $redirectPage = 'defaultRedirect.php';
       break;
   }
-
+  echo $redirectUrl;
   // Redirect to the determined page with the userId from the session
   // Append userId as a query parameter to the redirectPage URL
-  $redirectUrl = $redirectPage . '?userId=' . urlencode($userId);
+  $redirectUrl = $redirectPage . '?userId=' . $_SESSION['userId'];
   header("Location: $redirectUrl");
   exit(); // Stop further execution
 }
@@ -197,7 +192,7 @@ if (isset($_POST['proceedButton'])) {
                       <!-- payment method -->
                       <form action="account.php" method="post">
                         <!-- Add a hidden input field to include the userId -->
-                        <input type="hidden" name="userId" value="<?php echo htmlspecialchars($currentUserId); ?>">
+                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userId']; ?>">
                         <div class="modal-body">
                           <h4>Choose your payment</h4>
                           <div class="form-check">
@@ -224,7 +219,6 @@ if (isset($_POST['proceedButton'])) {
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
                           <button type="submit" class="btn btn-primary" name="proceedButton">Proceed</button>
                         </div>
                       </form>

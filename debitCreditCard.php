@@ -1,16 +1,12 @@
 <?php
 session_start();
-
+require "components/layout.php";
 // Retrieve userId from session
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+echo $userId = $_SESSION['userId'];
 
-// Retrieve selected payment option from form submission
-$selectedPaymentOption = isset($_POST['paymentOption']) ? $_POST['paymentOption'] : '';
-
-echo "User ID: $userId<br>";
-echo "Selected Payment Option: $selectedPaymentOption";
+// Debugging: Print the userId to check if it's correctly retrieved
+echo "User ID: $userId";
 ?>
-
 <style>
     body {
         overflow-x: hidden;
