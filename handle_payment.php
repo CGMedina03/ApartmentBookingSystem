@@ -2,7 +2,6 @@
 // Get the selected payment option from the form
 $paymentOption = $_POST['paymentOption'];
 
-// Retrieve userId from session
 $userId = $_POST['userId'];
 
 // Function to determine redirect page based on payment option

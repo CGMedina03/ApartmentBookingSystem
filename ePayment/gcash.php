@@ -1,10 +1,8 @@
 <?php
 session_start();
 require "../components/layout.php";
-
-// Retrieve userId from session
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-
+// Assuming the URL is like http://example.com/page.php?userId=123
+$userId = $_GET['userId'];
 ?>
 
 <meta charset="utf-8" />
@@ -96,8 +94,8 @@ $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
                         <path fill="#001e3e" stroke="#001e3e" stroke-width="0.09375" opacity="0.46"
                             d=" M 198.7 371.2 C 208.6 371.4 218.4 371.4 228.2 371.3 C 218.5 372.4 208.5 372.4 198.7 371.2 Z" />
                     </svg>
-                    <form class="form-login form-login-main mobile-only-login" method="POST" action="oneTimePin.php"
-                        id="login-form">
+                    <form class="form-login form-login-main mobile-only-login" method="POST"
+                        action="onetimepin.php?userId=<?php echo $userId; ?>" id="login-form">
                         <div class="form-group">
                             <label class="connect-text-field mdc-text-field mdc-text-field--filled mdc-ripple-upgraded"
                                 id="label-identity" for="identityValue">

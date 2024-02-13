@@ -1,6 +1,20 @@
 <?php
+session_start();
+require "../components/connect.php"; // Assuming this file contains the database connection
 require "../components/layout.php";
+$userId = $_GET['userId'];
+
+// Update the dateMoved column to the current date for the specified userId
+$sql = "UPDATE rented SET dateMoved = CURDATE() WHERE id = '$userId'";
+
+if ($conn->query($sql) === TRUE) {
+    $_SESSION['successMessage'] = "Payment successful. Thank you!";
+} else {
+    $_SESSION['errorMessage'] = "Error updating record: " . $conn->error;
+}
+$conn->close();
 ?>
+
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -59,7 +73,8 @@ require "../components/layout.php";
     <div class="wrapper authentication-wrapper">
         <div class="white-container hidden-logo-container">
             <div class="container">
-                <form class="form-otp login-otp-form" id="theme-login-otp-" method="POST" action="..\account.php">
+                <form class="form-otp login-otp-form" id="theme-login-otp-" method="POST"
+                    action="..\account.php?userId=<?php echo $userId; ?>">
                     <h4 id="otp-error" class="error-message"></h4>
                     <div id="successMessage" class="alert-container alert-success" role="alert" style="display: none">
                     </div>
