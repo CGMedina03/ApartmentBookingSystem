@@ -1,12 +1,27 @@
 <?php
 session_start();
-require "components/layout.php";
-// Retrieve userId from session
-echo $userId = $_SESSION['userId'];
+require "components\connect.php";
+require "components\layout.php";
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate and sanitize the form data (not shown here for brevity)
 
-// Debugging: Print the userId to check if it's correctly retrieved
-echo "User ID: $userId";
+    // Assuming payment processing is successful, update the database
+    $userId = $_GET['userId']; // Assuming you're passing userId in the URL
+    $sql = "UPDATE rented SET dateMoved = CURDATE() WHERE id = $userId";
+
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['successMessage'] = "Payment successful. Thank you!";
+        // Redirect the user to account.php after successful form submission
+        header("Location: account.php?userId=$userId");
+        exit(); // Ensure that subsequent code is not executed after redirection
+    } else {
+        echo "Error updating database: " . mysqli_error($conn);
+        // Handle error scenario
+    }
+}
 ?>
+
 <style>
     body {
         overflow-x: hidden;
@@ -97,13 +112,10 @@ echo "User ID: $userId";
         height: 100%;
     }
 </style>
-<title>Card Payment</title>
-</head>
-
 <div class="row">
     <div class="col-75">
         <div class="container">
-            <form action="..\account.php" method="post" onsubmit="return validateForm()">
+            <form action="" method="post" onsubmit="return validateForm()">
                 <div class="row">
                     <div class="col-50">
                         <h3>Payment</h3>
@@ -153,5 +165,6 @@ echo "User ID: $userId";
         </div>
     </div>
 </div>
+
 <script src="js\cardValidation.js">
 </script>

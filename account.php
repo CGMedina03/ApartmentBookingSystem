@@ -5,12 +5,6 @@ require 'components/retrieveRenters.php';
 require 'components/layout.php';
 require 'components/retrieveRooms.php';
 
-// Extract userId from the current URL parameters
-$_SESSION['userId'] = isset($_GET['userId']) ? $_GET['userId'] : '';
-
-// Debugging: Print userId to check if it's stored in the session
-echo "User ID stored in session: " . $_SESSION['userId'];
-
 // Check if the current user is a renter and get the rented title
 $isRenter = false;
 $title = "";
@@ -66,44 +60,10 @@ if ($isRenter && isset($title) && !empty($renter)) {
       if (!$updateResult) {
         echo "Error updating the advancePayment: " . mysqli_error($conn);
       }
-
-      // Show the toast notification if advance payment is all used up
-      if ($advancePayment <= 0) {
-        echo "<script>$(document).ready(function(){ $('#paymentToast').toast('show'); });</script>";
-      }
     }
   }
 }
 
-// Check if the form is submitted
-if (isset($_POST['proceedButton'])) {
-  // Extract userId from the current URL parameters
-  $_SESSION['userId'] = isset($_GET['userId']) ? $_GET['userId'] : '';
-  // Get the selected payment option
-  $selectedPaymentOption = isset($_POST['paymentOption']) ? $_POST['paymentOption'] : '';
-
-  // Determine the redirect page based on the selected payment option
-  $redirectPage = '';
-  switch ($selectedPaymentOption) {
-    case 'gcash':
-      $redirectPage = 'ePayment/gcash.php';
-      break;
-    case 'debitCard':
-    case 'creditCard':
-      $redirectPage = 'debitCreditCard.php';
-      break;
-    default:
-      // Default redirect page if no valid option is selected
-      $redirectPage = 'defaultRedirect.php';
-      break;
-  }
-  echo $redirectUrl;
-  // Redirect to the determined page with the userId from the session
-  // Append userId as a query parameter to the redirectPage URL
-  $redirectUrl = $redirectPage . '?userId=' . $_SESSION['userId'];
-  header("Location: $redirectUrl");
-  exit(); // Stop further execution
-}
 ?>
 <style>
   .danger-counter,
@@ -117,29 +77,17 @@ if (isset($_POST['proceedButton'])) {
 <body class="text-black bg-body-secondary mt-5 pt-5">
   <?php require 'components/navbar.php'; ?>
   <div class="container-md">
-
     <?php
     // Check if there is a success message in the session
     if (isset($_SESSION['successMessage'])) {
       $successMessage = $_SESSION['successMessage'];
-      unset($_SESSION['successMessage']); // Clear the session variable to show the message only once
+
       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
               <strong>' . $successMessage . ' </strong>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
     }
     ?>
-    <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 5">
-      <div id="paymentToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <strong class="me-auto">Payment Due</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-          Your advance payment balance is all used up. Please make the payment to avoid service disruption.
-        </div>
-      </div>
-    </div>
     <div class="row row-cols-1 row-cols-md-3 d-flex justify-content-center align-items-center">
       <!-- Card on the left -->
       <?php if ($isRenter && isset($room)): ?>
@@ -163,7 +111,7 @@ if (isset($_POST['proceedButton'])) {
                   </h5>
                 <?php elseif ($daysRemaining <= 5): ?>
                   <h5 class="danger-counter">
-                    <?php echo $daysRemaining; ?> days remaining
+                    Your rent is due. Plesase pay now through here or cash. Thank you!
                   </h5>
                 <?php else: ?>
                   <h5>
@@ -179,7 +127,8 @@ if (isset($_POST['proceedButton'])) {
                     </strong></p>
                 <?php endif; ?>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-light rounded-pill mt-3" data-bs-toggle="modal"
+                  data-bs-target="#modal">
                   Payment
                 </button>
                 <!-- Modal -->
@@ -192,9 +141,7 @@ if (isset($_POST['proceedButton'])) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <!-- payment method -->
-                      <form action="account.php" method="post">
-                        <!-- Add a hidden input field to include the userId -->
-                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userId']; ?>">
+                      <form action="handle_payment.php" method="post">
                         <div class="modal-body">
                           <h4>Choose your payment</h4>
                           <div class="form-check">
@@ -217,7 +164,10 @@ if (isset($_POST['proceedButton'])) {
                               Credit Card
                             </label>
                           </div>
-                          <input type="hidden" name="redirectPage" value="">
+                          <!-- Hidden input field to pass userId -->
+                          <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                          <!-- Hidden input field to pass redirectPage -->
+                          <input type="hidden" name="redirectPage" id="redirectPage" value="">
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -232,15 +182,14 @@ if (isset($_POST['proceedButton'])) {
           </div>
         </div>
       <?php endif; ?>
-
       <!-- Name, paragraph, and button in the center -->
       <div class="col d-flex flex-column align-items-center p-3 text-center vh-25">
         <h1 class="pt-5">Welcome
           <?php echo $fName; ?>!
         </h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ex
-          quos libero non quasi blanditiis veniam tempore. Eligendi, hic enim.
+          Thank you for joining our community. We strive to provide the best experience for our users.
+          Feel free to explore and engage with our platform.
         </p>
         <a href="reviews.php?userId=<?php echo $userId; ?>"
           class="btn btn-outline-dark w-50 mt-5 rounded-pill d-none d-md-block">
@@ -256,6 +205,5 @@ if (isset($_POST['proceedButton'])) {
           class="btn btn-outline-dark w-25 my-3 rounded-pill text-decoration-none">Update</a>
       </div>
     </div>
-
   </div>
 </body>
