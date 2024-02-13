@@ -55,9 +55,9 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
 <title>Room Details</title>
 </head>
 <div class="container mt-5 pt-5 mt-lg-5">
-    <div class="row mb-3 mb-lg-5">
+    <div class="row">
         <!-- room pics -->
-        <div class="col-lg-6 mb-3">
+        <div class="col-lg-6 ">
             <!-- Carousel -->
             <?php if (!empty($pictureUrls)): ?>
                 <?php if (count($pictureUrls) > 1): ?>
@@ -122,20 +122,24 @@ $pictureUrls = ($picture !== '') ? array_filter(explode("\n", $picture), 'trim')
                         </h4>
                     </div>
                 </div>
+                <!-- appoint button -->
+                <div class="my-3">
+                    <div class="d-flex justify-content-center">
+                        <?php if (isset($_GET['userId'])): ?>
+                            <!-- Redirect to bookForm.php for logged-in users -->
+                            <a href="bookForm.php?userId=<?php echo urlencode($_GET['userId']); ?>&rID=<?php echo $room['rID']; ?>"
+                                class="btn btn-outline-light rounded-pill w-50 text-decoration-none">Appoint</a>
+                        <?php else: ?>
+                            <!-- Redirect to login.php for users not logged in -->
+                            <a href="login.php"
+                                class="btn btn-outline-light rounded-pill w-50 text-decoration-none">Appoint</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
+
         </div>
+
     </div>
-    <!-- appoint button -->
-    <div class="row mb-5">
-        <div class="d-flex justify-content-center">
-            <?php if (isset($_GET['userId'])): ?>
-                <!-- Redirect to bookForm.php for logged-in users -->
-                <a href="bookForm.php?userId=<?php echo urlencode($_GET['userId']); ?>&rID=<?php echo $room['rID']; ?>"
-                    class="btn btn-outline-dark rounded-pill w-50 text-decoration-none">Appoint</a>
-            <?php else: ?>
-                <!-- Redirect to login.php for users not logged in -->
-                <a href="login.php" class="btn btn-outline-dark rounded-pill w-50 text-decoration-none">Appoint</a>
-            <?php endif; ?>
-        </div>
-    </div>
+
 </div>

@@ -73,40 +73,46 @@ if (isset($_GET['roomSize']) && !empty($_GET['roomSize'])) {
   <div class="advertImg2">
     <img src="assets\Grey Real State Apartment For Rent Instagram Story_20240127_195254_0000.png" alt="">
   </div>
-  <!-- Search bar -->
-  <form method="GET" action="">
-    <div class="mb-3 searchBar">
-      <input class="inputSearch form-control" type="text" name="userId"
-        value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>" style="display: none;">
-      <input class="inputSearch form-control" type="text" name="search" placeholder="Search rooms..."
-        value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-      <button class="searchBtn" type="submit" role="button"><span class="text">Search</span></button>
-    </div>
-  </form>
-
   <hr />
   <!-- rooms -->
   <section id="rooms">
     <div class="container-sm py-3">
-
-      <!-- Filter form -->
-      <form action="" method="GET">
-        <div class="filterBar">
-          <input class="inputFilter form-control" type="text" name="userId"
-            value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>" style="display: none;">
-          <select name="roomSize" class="inputFilter form-control">
-            <option value="">Select Room Size</option>
-            <option value="1">1 person</option>
-            <option value="2">2 people</option>
-            <option value="3">3 people</option>
-          </select>
-          <button class="filterBtn" type="submit" role="button"><span class="text">Filter</span></button>
-        </div>
-      </form>
-
-      <?php foreach ($filteredRooms as $room): ?>
-        <?php if ($room['status'] === 'Available' || $room['status'] === 'Undecided'): ?>
-          <div class="mb-3 mx-lg-5 px-lg-5">
+      <div class="findRooms">
+        <!-- Filter form -->
+        <form action="" method="GET">
+          <div class="filterBar">
+            <input class="inputFilter form-control" type="text" name="userId"
+              value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>" style="display: none;">
+            <select name="roomSize" class="inputFilter form-control">
+              <option value="">Select Room Size</option>
+              <option value="1">1 person</option>
+              <option value="2">2 people</option>
+              <option value="3">3 people</option>
+            </select>
+            <button class="filterBtn" type="submit" role="button"><span class="text">Filter</span></button>
+          </div>
+        </form>
+        <!-- Search bar -->
+        <form method="GET" action="">
+          <div class="searchBar">
+            <input class="inputSearch form-control" type="text" name="userId"
+              value="<?php echo isset($_GET['userId']) ? $_GET['userId'] : ''; ?>" style="display: none;">
+            <input class="inputSearch form-control" type="text" name="search" placeholder="Search rooms..."
+              value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+            <button class="searchBtn" type="submit" role="button"><span class="text">Search</span></button>
+          </div>
+        </form>
+      </div>
+      <?php
+      $hiddenRoomCount = 0; // Initialize a counter for hidden rooms
+      foreach ($filteredRooms as $index => $room):
+        if ($room['status'] === 'Available' || $room['status'] === 'Undecided'):
+          $hiddenClass = ($index >= 3 && $hiddenRoomCount < 9) ? 'hidden-room' : ''; // Add hidden-room class for the first 3 hidden rooms
+          if ($hiddenClass === 'hidden-room') {
+            $hiddenRoomCount++; // Increment the counter for hidden rooms
+          }
+          ?>
+          <div class="room mb-3 mx-lg-5 px-lg-5 <?php echo $hiddenClass; ?>">
             <div class="d-lg-flex <?php echo $room['rID'] % 2 == 0 ? 'flex-row-reverse' : ''; ?>">
               <div class="pt-3 p-lg-3">
                 <?php if (isset($room['picture']) && !empty(trim($room['picture']))): ?>
@@ -144,8 +150,40 @@ if (isset($_GET['roomSize']) && !empty($_GET['roomSize'])) {
           </div>
         <?php endif; ?>
       <?php endforeach; ?>
+      <!-- Add a button at the bottom -->
+      <button id="seeMoreButton" class="btn btn-primary mt-3 seeBtn">See more</button>
     </div>
   </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const seeMoreButton = document.getElementById("seeMoreButton");
+
+      seeMoreButton.addEventListener("click", function () {
+        const hiddenRooms = document.querySelectorAll(".hidden-room");
+        const roomsToShow = 2;
+
+        console.log("Button clicked");
+        console.log("Initial hidden rooms count: " + hiddenRooms.length);
+
+        let count = 0;
+        // Show the next set of hidden rooms
+        hiddenRooms.forEach(function (room) {
+          if (count < roomsToShow && room.classList.contains("hidden-room")) {
+            room.style.display = "block";
+            room.classList.remove("hidden-room");
+            count++;
+          }
+        });
+
+        console.log("Current hidden rooms count: " + hiddenRooms.length);
+
+        // Hide the "See more" button when all rooms are visible
+        if (hiddenRooms.length === 0) {
+          seeMoreButton.style.display = "none";
+        }
+      });
+    });
+  </script>
   <!-- adds on -->
   <section id="addson">
     <div class="container-fluid bg-dark text-white pt-3">
@@ -258,7 +296,7 @@ if (isset($_GET['roomSize']) && !empty($_GET['roomSize'])) {
     </div>
   </footer>
   <script>
-
+    // modal funtion
     document.addEventListener("DOMContentLoaded", function () {
       const modalTitleElement = document.getElementById("modal-title");
       const modalDescriptionElement = document.getElementById("modal-description");
