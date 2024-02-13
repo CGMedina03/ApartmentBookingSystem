@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2024 at 04:06 PM
+-- Generation Time: Feb 13, 2024 at 11:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -162,8 +162,8 @@ CREATE TABLE `rented` (
 --
 
 INSERT INTO `rented` (`id`, `title`, `fName`, `lName`, `pfPicture`, `email`, `password`, `cPassword`, `addOn`, `timestamp`, `timeRented`, `advancePayment`, `dateMoved`) VALUES
-(37, 'Room C301', 'Genesis', 'Medina', 'uploads/alhaitham-birthday-art-genshinimpact.jpg', 'a@b.com', '$2y$10$D96JcMQQw.eHb6Eg5Mehv.BO0ejs/SLH0l/S6A6gRQgzyRWr.mge2', '$2y$10$D96JcMQQw.eHb6Eg5Mehv.BO0ejs/SLH0l/S6A6gRQgzyRWr.mge2', 'Refrigerator, Gas Range', '2024-02-12 02:05:32', '2023-08-03 15:25:57', 2500, '2024-02-12'),
-(38, 'Room A103', 'Raiden', 'Shogun', 'uploads/GenshinImpact_YaeMikoWallpaper4.jpg', 'miko@gmail.com', '$2y$10$HX8dcLYN349xC6q9MswipuA/LYyG63GLA8ATYCg/7a05JIg8i2roG', '$2y$10$HX8dcLYN349xC6q9MswipuA/LYyG63GLA8ATYCg/7a05JIg8i2roG', 'Refrigerator, Gas Range', '2024-02-12 09:00:00', '2023-08-03 15:31:59', 3800, '2024-01-29');
+(37, 'Room C301', 'Genesis', 'Medina', 'uploads/alhaitham-birthday-art-genshinimpact.jpg', 'a@b.com', '$2y$10$D96JcMQQw.eHb6Eg5Mehv.BO0ejs/SLH0l/S6A6gRQgzyRWr.mge2', '$2y$10$D96JcMQQw.eHb6Eg5Mehv.BO0ejs/SLH0l/S6A6gRQgzyRWr.mge2', 'Refrigerator, Gas Range', '2024-02-13 09:58:47', '2023-08-03 15:25:57', 2500, '2024-02-13'),
+(38, 'Room A103', 'Raiden', 'Shogun', 'uploads/GenshinImpact_YaeMikoWallpaper4.jpg', 'miko@gmail.com', '$2y$10$HX8dcLYN349xC6q9MswipuA/LYyG63GLA8ATYCg/7a05JIg8i2roG', '$2y$10$HX8dcLYN349xC6q9MswipuA/LYyG63GLA8ATYCg/7a05JIg8i2roG', 'Refrigerator, Gas Range', '2024-02-13 09:59:15', '2023-08-03 15:31:59', 2800, '2024-02-13');
 
 -- --------------------------------------------------------
 
