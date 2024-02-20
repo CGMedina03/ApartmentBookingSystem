@@ -79,17 +79,6 @@ if ($isRenter && isset($title) && !empty($renter)) {
   <div class="container-md">
     <?php
     // Check if there is a success message in the session
-    if (isset($_SESSION['successMessage'])) {
-      $successMessage = $_SESSION['successMessage'];
-
-      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>' . $successMessage . ' </strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>';
-    }
-    ?>
-    <?php
-    // Check if there is a success message in the session
     if (isset($_SESSION['successPaymentMessage'])) {
       $successPaymentMessage = $_SESSION['successPaymentMessage'];
 

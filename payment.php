@@ -190,8 +190,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <h2 id="general-error" class="error-message"></h2>
                                     <div class="form-group col-sm-12">
                                         <button type="submit"
-                                            class="btn btn-outline-dark rounded-lg p-2 btn-block">Proceed</button>
-                                        <button class="btn mt-3 btn-sm p-3">Cancel</button>
+                                            class="btn btn-outline-dark rounded-5 p-2 btn-block">Proceed</button>
+                                        <button type="button" class="btn mt-3 btn-sm btn-block rounded-3">
+                                            <a href="account.php?userId=<?php echo $userId; ?>"
+                                                class="text-dark text-decoration-none link-underline-opacity-0">Cancel</a>
+                                        </button>
                                     </div>
                                 </div>
                     </form>
