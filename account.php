@@ -88,6 +88,17 @@ if ($isRenter && isset($title) && !empty($renter)) {
           </div>';
     }
     ?>
+    <?php
+    // Check if there is a success message in the session
+    if (isset($_SESSION['successPaymentMessage'])) {
+      $successPaymentMessage = $_SESSION['successPaymentMessage'];
+
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>' . $successPaymentMessage . ' </strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+    }
+    ?>
     <div class="row row-cols-1 row-cols-md-3 d-flex justify-content-center align-items-center">
       <!-- Card on the left -->
       <?php if ($isRenter && isset($room)): ?>
@@ -126,57 +137,11 @@ if ($isRenter && isset($title) && !empty($renter)) {
                       <?php echo $advancePayment; ?>
                     </strong></p>
                 <?php endif; ?>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-light rounded-pill mt-3" data-bs-toggle="modal"
-                  data-bs-target="#modal">
-                  Payment
-                </button>
-                <!-- Modal -->
-                <div class="modal fade text-black" id="modal" data-bs-backdrop="static" data-bs-keyboard="false"
-                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Method</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <!-- payment method -->
-                      <form action="handle_payment.php" method="post">
-                        <div class="modal-body">
-                          <h4>Choose your payment</h4>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paymentOption" id="gcash" value="gcash">
-                            <label class="form-check-label" for="gcash">
-                              Gcash
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paymentOption" id="debitCard"
-                              value="debitCard">
-                            <label class="form-check-label" for="debitCard">
-                              Debit Card
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paymentOption" id="creditCard"
-                              value="creditCard">
-                            <label class="form-check-label" for="creditCard">
-                              Credit Card
-                            </label>
-                          </div>
-                          <!-- Hidden input field to pass userId -->
-                          <input type="hidden" name="userId" value="<?php echo $userId; ?>">
-                          <!-- Hidden input field to pass redirectPage -->
-                          <input type="hidden" name="redirectPage" id="redirectPage" value="">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                          <button type="submit" class="btn btn-primary" name="proceedButton">Proceed</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <form action="payment.php" method="GET">
+                  <!-- Hidden input field to pass userId -->
+                  <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                  <button type="submit" class="btn btn-light rounded-pill mt-3">Payment</button>
+                </form>
               </div>
             </div>
           </div>

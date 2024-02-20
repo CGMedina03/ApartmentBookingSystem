@@ -8,7 +8,8 @@ $userId = $_GET['userId'];
 $sql = "UPDATE rented SET dateMoved = CURDATE() WHERE id = '$userId'";
 
 if ($conn->query($sql) === TRUE) {
-    $_SESSION['successMessage'] = "Payment successful. Thank you!";
+    $_SESSION['successPaymentMessage'] = "Payment successful. Thank you!";
+    unset($_SESSION["successPaymentMessage"]);
 } else {
     $_SESSION['errorMessage'] = "Error updating record: " . $conn->error;
 }

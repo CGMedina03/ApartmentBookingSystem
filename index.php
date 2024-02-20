@@ -43,15 +43,6 @@ if (isset($_GET['roomSize']) && !empty($_GET['roomSize'])) {
 
 <body class="bg-body-secondary">
   <?php require 'components/navbar.php';
-
-  if (isset($_SESSION['successMessage'])) {
-    $successMessage = $_SESSION['successMessage'];
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>' . $successMessage . '</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-    unset($_SESSION['successMessage']);
-  }
   ?>
 
   <!-- Hero section -->

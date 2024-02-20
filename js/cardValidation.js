@@ -180,11 +180,11 @@ function togglePasswordVisibility() {
 
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
-    toggleIcon.classList.remove("fa-eye-slash");
-    toggleIcon.classList.add("fa-eye");
+    toggleIcon.classList.remove("bi-eye-fill");
+    toggleIcon.classList.add("bi-eye-slash-fill");
   } else {
     passwordInput.type = "password";
-    toggleIcon.classList.remove("fa-eye");
-    toggleIcon.classList.add("fa-eye-slash");
+    toggleIcon.classList.remove("bi-eye-slash-fill");
+    toggleIcon.classList.add("bi-eye-fill");
   }
 }

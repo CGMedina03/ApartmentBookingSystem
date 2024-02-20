@@ -141,6 +141,7 @@ if (isset($_POST['submit']) || isset($_POST['userId'])) {
             // Redirect to success page if non-password fields were successfully updated
             if ($resultUserInfo && $resultRented) {
                 $_SESSION['successMessage'] = 'Succesfully updated your account';
+                unset($_SESSION['successMessage']);
                 // Redirect back to account.php with only the userId in the URL
                 $redirectUrl = 'account.php?userId=' . urlencode($userId);
                 header("Location: " . $redirectUrl);

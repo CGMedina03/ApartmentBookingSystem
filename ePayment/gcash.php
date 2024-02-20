@@ -144,7 +144,7 @@ $userId = $_GET['userId'];
         </div>
         <div class="body-footer">
             <div class="container width-max">
-                <span>Copyright © 2022 GCAsh. All rights reserved.</span>
+                <span>Copyright © 2022 GCash. All rights reserved.</span>
             </div>
         </div>
     </div>
