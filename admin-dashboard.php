@@ -580,29 +580,24 @@ $isAddAddsOn = $currentFile === 'addAddsOn.php';
         document.getElementById('breadcrumbs').innerHTML = '<ol class="breadcrumb ms-5"><li class="breadcrumb-item "><a href="admin-dashboard.php?userId=<?php echo $userId; ?>">Dashboard</a></li><li class="breadcrumb-item active  text-black">AddsOn</li></ol>';
     });
 
-    // Function to generate a color based on the input label
-    function getColor(label) {
-        // Use a hash function to convert the label to a numerical value
-        let hash = 0;
-        for (let i = 0; i < label.length; i++) {
-            hash = label.charCodeAt(i) + ((hash << 5) - hash);
+    // Function to generate a random color
+    function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
         }
-
-        // Convert the numerical value to a hexadecimal color code
-        const color = "#" + ((hash & 0x00FFFFFF).toString(16)).toUpperCase();
-
-        // Make sure the color is not too light (adjust as needed)
-        return color.padEnd(7, "0");
+        return color;
     }
+
     // Function to create the doughnut chart
     function createDoughnutChart(chartData) {
-        // Function to generate colors based on the chart data labels
+        // Function to generate random colors based on the chart data labels
         function generateColors(labels) {
-            const colors = labels.map(label => getColor(label));
-            return colors;
+            return labels.map(label => getRandomColor());
         }
 
-        // Data for the doughnut chart
+        // Data for the doughnut chart (unchanged)
         const data = {
             labels: chartData.labels,
             datasets: [{
@@ -624,7 +619,7 @@ $isAddAddsOn = $currentFile === 'addAddsOn.php';
             return newColor;
         }
 
-        // Chart options
+        // Chart options (unchanged)
         const options = {
             responsive: false,
             maintainAspectRatio: false,
@@ -632,15 +627,28 @@ $isAddAddsOn = $currentFile === 'addAddsOn.php';
             legend: {
                 display: true,
                 position: "bottom",
+                labels: {
+                    font: {
+                        size: 18 // Adjust the font size for legend labels
+                    },
+                    generateLabels: function (chart) {
+                        // Get the chart data labels
+                        const labels = chart.data.labels;
+                        // Generate colors for each label
+                        const colors = labels.map(label => getRandomColor());
+                        // Create legend labels with specified colors
+                        return labels.map((label, index) => {
+                            return {
+                                text: label,
+                                fillStyle: colors[index], // Set color for each label
+                                strokeStyle: colors[index], // Set color for the stroke of the legend box
+                                lineWidth: 2 // Adjust the width of the stroke
+                            };
+                        });
+                    }
+                }
             },
             plugins: {
-                legend: {
-                    labels: {
-                        font: {
-                            size: 18 // Adjust the font size for legend labels
-                        }
-                    }
-                },
                 datalabels: {
                     color: "#fff", // Font color for the labels
                     font: {
@@ -654,7 +662,7 @@ $isAddAddsOn = $currentFile === 'addAddsOn.php';
             }
         };
 
-        // Create the doughnut chart
+        // Create the doughnut chart (unchanged)
         const ctx = document.getElementById("roomOccupancyChart").getContext("2d");
         const myDoughnutChart = new Chart(ctx, {
             type: "doughnut",
