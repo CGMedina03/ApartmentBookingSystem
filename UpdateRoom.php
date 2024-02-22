@@ -108,8 +108,6 @@ require 'components/navbar.php';
             <label for="status-available">Available</label><br>
             <input type="radio" id="status-reserved" name="status" value="Reserved" <?php echo $roomData['status'] === 'Reserved' ? 'checked' : ''; ?>>
             <label for="status-reserved">Reserved</label><br>
-            <input type="radio" id="status-undecided" name="status" value="Undecided" <?php echo $roomData['status'] === 'Undecided' ? 'checked' : ''; ?>>
-            <label for="status-undecided">Under Construction</label>
         </div>
         <div class="col-md-8">
             <label for="formFileMultiple" class="form-label">Pictures</label>
